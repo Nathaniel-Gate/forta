@@ -11,7 +11,7 @@ export function Team() {
   return (
     <Section id="team" tone="paper" labelledBy="team-heading">
       <Container>
-        <SectionHeader id="team-heading" index={t.index} eyebrow={t.eyebrow} title={t.title} />
+        <SectionHeader id="team-heading" title={t.title} />
         <ul className="grid gap-px bg-ink-900/15 md:grid-cols-2">
           {t.people.map((p, i) => (
             <Reveal as="li" key={p.name} delay={i * 0.1} className="bg-paper">
@@ -26,7 +26,7 @@ export function Team() {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <p className="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-ink-900/75">{p.role}</p>
+                  <p className="text-[0.85rem] text-ink-900/75">{p.role}</p>
                   <h3 className="mt-2 text-[1.9rem] font-medium leading-none tracking-[-0.035em]">{p.name}</h3>
                   <p className="mt-3 text-[1.05rem] leading-snug">{p.headline}</p>
                   <ul className="mt-5 space-y-1.5 text-[0.92rem] text-ink-900/75">

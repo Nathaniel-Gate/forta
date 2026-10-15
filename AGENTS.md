@@ -6,8 +6,15 @@ Read this before changing anything. It is short on purpose.
 
 A single-page marketing site for Forta, which makes companies AI-native: client
 teams learn to build with AI, and rented software is replaced by systems they own.
-Written for a 10-second visit: the hero must carry the offer and three numbers
-above the fold on a laptop; every section lands from its title and big numbers.
+Written for a 10-second visit. The lead offer is the free stack rebuild (form in
+the hero and at /stack, the link used in outreach; requests go to /api/stack).
+
+**No AI tells.** Do not add: numbered mono eyebrow labels, uppercase tracked
+labels, pulsing "live" dots, serif-italic accent words, grid/grain/glow
+backgrounds, gradient hairlines, glowing buttons, fade-in-on-scroll for every
+block, smooth-scroll libraries, card grids for everything, or lists of exactly
+three. Copy: plain sentences, specifics, no fragment chains, no "not X, it's Y",
+and never imply a track record Forta doesn't have yet.
 Next.js 16 (App Router, Cache Components on), React 19, TypeScript, Tailwind v4.
 Hosted on GitHub as a shareable repo. Do not deploy anywhere without the owner asking.
 
@@ -16,12 +23,15 @@ Hosted on GitHub as a shareable repo. Do not deploy anywhere without the owner a
 ```
 src/
   app/
-    layout.tsx           fonts, metadata, <SmoothScroll>
+    layout.tsx           fonts, metadata
     page.tsx             section order (the narrative). Section ids = nav anchors
     globals.css          ALL design tokens (@theme) + shared surface classes
-    api/enquiry/route.ts POST handler, validates with the shared Zod schema
+    api/enquiry/route.ts contact form handler (shared Zod schema)
+    api/stack/route.ts   free stack rebuild requests -> .data/stack-requests.ndjson
+    stack/page.tsx       stand-alone outreach landing page for the stack offer
   content/               ALL copy. Edit words here, never in components
     home.ts              per-section copy, in page order
+    stack.ts             free stack rebuild offer copy and tool suggestions
     faq.ts, navigation.ts
     sources.ts           every statistic's citation (numbered refs in footer)
   config/calculator.ts   every calculator input range and assumption
@@ -49,7 +59,7 @@ public/team/   director photos (from LinkedIn), rendered greyscale
    On paper surfaces, keep ink text at 70% opacity or more.
 4. **Blue (`signal`) is rare.** Live states, the capability line, focus rings.
    If you are adding a third blue thing to a section, don't.
-5. **Motion must be hydration-safe.** Never branch rendered markup on
+5. **Motion is rare and must be hydration-safe.** Never branch rendered markup on
    `useReducedMotion()`; keep `initial`/`animate` identical and set the
    transition to `{ duration: 0 }` when reduced. See `Reveal.tsx`.
 6. **Calculator maths changes need tests.** Run `npm test`. Knobs belong in

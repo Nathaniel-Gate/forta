@@ -7,11 +7,10 @@ import { requestIntent } from "@/lib/intent";
 type Variant = "primary" | "ghost" | "paper";
 
 const base =
-  "group relative inline-flex min-h-12 items-center justify-center gap-3 overflow-hidden px-6 text-[0.95rem] font-medium tracking-[-0.01em] transition-[background-color,color,box-shadow,border-color] duration-300 ease-[var(--ease-out-expo)]";
+  "group relative inline-flex min-h-12 items-center justify-center gap-3 px-6 text-[0.95rem] font-medium transition-colors duration-200";
 
 const variants: Record<Variant, string> = {
-  primary:
-    "bg-white text-ink-950 hover:bg-stone-100 shadow-[0_0_0_1px_rgb(255_255_255/0.4),0_0_32px_-8px_rgb(255_255_255/0.5)] hover:shadow-[0_0_0_1px_rgb(91_140_255/0.6),0_0_36px_-6px_rgb(91_140_255/0.55)]",
+  primary: "bg-white text-ink-950 hover:bg-stone-200",
   ghost: "border border-[var(--hairline-strong)] text-current hover:border-current",
   paper: "bg-ink-950 text-white hover:bg-ink-800",
 };
@@ -35,7 +34,7 @@ export function ButtonLink({
   variant = "primary",
   className,
   children,
-  arrow = true,
+  arrow = false,
 }: {
   href?: string;
   intent?: Intent;

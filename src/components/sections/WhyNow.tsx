@@ -1,35 +1,29 @@
 import { whyNow } from "@/content/home";
 import { Container } from "@/components/ui/Container";
-import { Reveal } from "@/components/ui/Reveal";
 import { Section } from "@/components/ui/Section";
-import { SectionHeader } from "@/components/ui/SectionHeader";
-import { SourceLabel } from "@/components/ui/SourceRef";
+import { SourceRef } from "@/components/ui/SourceRef";
 
-/** Three sourced numbers. The section must land from the numbers alone. */
 export function WhyNow() {
   const w = whyNow;
   return (
-    <Section id="why" tone="ink" labelledBy="why-heading" className="!py-20 sm:!py-28">
+    <Section id="why" tone="ink" labelledBy="why-heading" className="!py-20 sm:!py-24">
       <Container>
-        <SectionHeader id="why-heading" index={w.index} eyebrow={w.eyebrow} title={w.title} />
-        <ul className="grid border-t hairline md:grid-cols-3">
-          {w.stats.map((s, i) => (
-            <Reveal
-              as="li"
-              key={s.value}
-              delay={i * 0.08}
-              className="flex flex-col justify-between gap-8 border-b hairline py-9 md:border-b-0 md:px-8 md:first:pl-0 md:[&:not(:first-child)]:border-l"
-            >
-              <div>
-                <p className="text-[clamp(3.6rem,7vw,6rem)] font-medium leading-none tracking-[-0.06em] text-white">
-                  {s.value}
+        <div className="grid gap-10 lg:grid-cols-[0.6fr_1fr] lg:gap-16">
+          <h2 id="why-heading" className="text-[clamp(2rem,4vw,3rem)] font-medium leading-tight tracking-[-0.035em]">
+            {w.title}
+          </h2>
+          <ul className="grid gap-10 sm:grid-cols-2">
+            {w.stats.map((s) => (
+              <li key={s.value}>
+                <p className="text-[clamp(3.2rem,6vw,4.8rem)] font-medium leading-none tracking-[-0.05em] text-white">{s.value}</p>
+                <p className="mt-4 text-[1.02rem] leading-relaxed text-steel-300">
+                  {s.label}
+                  <SourceRef id={s.source} />
                 </p>
-                <p className="mt-4 max-w-[18rem] text-[1.05rem] leading-snug text-steel-300">{s.label}</p>
-              </div>
-              <SourceLabel id={s.source} />
-            </Reveal>
-          ))}
-        </ul>
+              </li>
+            ))}
+          </ul>
+        </div>
       </Container>
     </Section>
   );

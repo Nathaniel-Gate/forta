@@ -2,7 +2,7 @@
 
 export const brand = {
   name: "Forta",
-  descriptor: "AI-native transformation",
+  descriptor: "Helping companies become AI-native",
   location: "London, United Kingdom",
 };
 
@@ -14,7 +14,7 @@ export const navLinks = [
   { label: "FAQ", href: "#faq" },
 ];
 
-export const navCta = { label: "Book a call", intent: "call" as const };
+export const navCta = { label: "Free stack rebuild", href: "/#stack" };
 
 export const footer = {
   statement: "Forta makes companies AI-native.",
@@ -22,7 +22,7 @@ export const footer = {
     {
       title: "Explore",
       links: [
-        { label: "What you get", href: "#what" },
+        { label: "Free stack rebuild", href: "/stack" },
         { label: "How it works", href: "#method" },
         { label: "Savings estimate", href: "#calculator" },
       ],

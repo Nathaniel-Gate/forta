@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { navCta, navLinks } from "@/content/navigation";
-import { requestIntent } from "@/lib/intent";
 import { Logo } from "@/components/ui/Logo";
 import { cn } from "@/lib/cn";
 
@@ -75,8 +74,7 @@ export function Nav() {
 
           <div className="flex items-center gap-3">
             <a
-              href="#contact"
-              onClick={() => requestIntent(navCta.intent)}
+              href={navCta.href}
               className="hidden h-10 items-center border border-white/20 px-4 text-[0.85rem] text-white transition-colors hover:border-white hover:bg-white hover:text-ink-950 sm:inline-flex"
             >
               {navCta.label}
@@ -120,7 +118,6 @@ export function Nav() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="bg-blueprint absolute inset-0 opacity-60" aria-hidden />
             <ul className="relative flex flex-col px-[var(--gutter)] pt-8">
               {navLinks.map((l, i) => (
                 <motion.li
@@ -136,18 +133,14 @@ export function Nav() {
                     className="flex items-baseline justify-between py-5 text-3xl font-medium tracking-[-0.03em] text-white"
                   >
                     {l.label}
-                    <span className="font-mono text-xs text-steel-400">0{i + 1}</span>
                   </a>
                 </motion.li>
               ))}
             </ul>
             <div className="relative px-[var(--gutter)] pt-10">
               <a
-                href="#contact"
-                onClick={() => {
-                  requestIntent(navCta.intent);
-                  setOpen(false);
-                }}
+                href={navCta.href}
+                onClick={() => setOpen(false)}
                 className="flex h-14 items-center justify-center bg-white text-ink-950"
               >
                 {navCta.label}

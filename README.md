@@ -24,8 +24,10 @@ Other scripts:
 | `npm run lint` | ESLint (Next config) |
 | `npm test` | Vitest unit tests for the savings calculator |
 
-Enquiries submitted through the form are validated and appended to
-`.data/enquiries.ndjson` (gitignored). To go live, swap the `store()` call in
+Free stack rebuild requests (hero form and `/stack`) go to `.data/stack-requests.ndjson`,
+contact enquiries to `.data/enquiries.ndjson` (both gitignored). Before going live,
+add an email or Slack alert in `src/app/api/stack/route.ts`: the offer promises a reply
+within three hours. To go live, swap the `store()` call in
 `src/app/api/enquiry/route.ts` for a CRM or email provider.
 
 ## Stack and why
@@ -34,8 +36,7 @@ Enquiries submitted through the form are validated and appended to
 | --- | --- |
 | Next.js 16 App Router, React 19, TypeScript | Static-first page with one API route for the form |
 | Tailwind CSS v4 with `@theme` tokens | One file (`globals.css`) holds the whole design system |
-| Motion (`motion/react`) | Reveals, SVG line drawing, the method gauge, count-ups |
-| Lenis | Smooth scroll and anchor gliding; off under reduced motion |
+| Motion (`motion/react`) | The method gauge and calculator count-ups only |
 | React Hook Form + Zod | Form state and validation; the same schema validates on the server |
 | Radix Accordion | Accessible FAQ |
 | Vitest | Calculator maths is tested by hand-worked cases |
@@ -45,8 +46,7 @@ Magic UI and React Three Fiber. Their stock effects (spotlights, beams, 3D
 globes) are exactly the "AI startup" look this brand avoids; every visual here
 is a bespoke SVG in the blueprint idiom. GSAP was unnecessary next to Motion.
 
-Fonts: Hanken Grotesk (text and display), Newsreader italic (editorial
-emphasis), IBM Plex Mono (drawing annotations), all via `next/font`.
+Fonts: Hanken Grotesk for everything, IBM Plex Mono for a few figures, via `next/font`.
 
 ## Project structure
 

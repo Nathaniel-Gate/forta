@@ -18,20 +18,3 @@ export function SourceRef({ id, className }: { id: SourceId; className?: string 
     </a>
   );
 }
-
-/** Inline source label for stat cards: "Gartner, Oct 2024 [1]" */
-export function SourceLabel({ id, className }: { id: SourceId; className?: string }) {
-  const s = getSource(id);
-  const n = sourceIndex[id];
-  return (
-    <a
-      href={`#ref-${n}`}
-      className={cn(
-        "font-mono text-[0.68rem] uppercase tracking-[0.12em] opacity-75 transition-opacity hover:opacity-100",
-        className,
-      )}
-    >
-      {s.publisher}, {s.year} <span aria-hidden>[{n}]</span>
-    </a>
-  );
-}

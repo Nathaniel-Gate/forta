@@ -3,161 +3,126 @@
  * Components only lay this out; edit words here, not in the components.
  *
  * House style: British English, no exclamation marks, no em dashes.
- * Write for a 10-second skim: every section must make its point in its
- * title and big numbers alone. Body text is optional reading.
+ * Write like a person talking to a COO: plain sentences, specifics, names.
+ * Avoid the tells of machine-written copy: lists of exactly three, chains of
+ * short fragments ("Faster. Cheaper. Better."), "not X, it's Y", and filler
+ * words like seamless, unlock, empower, elevate, journey.
  */
 
 import type { SourceId } from "./sources";
 
 export type Stat = { value: string; label: string; source: SourceId };
 
-/* ------------------------------------------------------------------ */
-/* Hero                                                                */
-/* ------------------------------------------------------------------ */
-
 export const hero = {
-  eyebrow: "AI-native transformation · UK",
-  headline: ["Make your", "company", "AI-native."],
+  headline: "Make your company AI-native.",
   subhead:
-    "We train your team to build with AI, replace the software you rent with systems you own, and leave you with lower costs and a faster business.",
-  primaryCta: { label: "Book a strategy call", intent: "call" as const },
-  secondaryCta: { label: "See your savings", href: "#calculator" },
-  /** The 10-second promise: three numbers a visitor can take away. */
-  proof: [
-    { value: "16 weeks", label: "to a team that builds with AI" },
-    { value: "100%", label: "of the code, data and skills stay yours" },
-    { value: "3 weeks", label: "fixed-fee review shows your savings first" },
-  ],
+    "We teach your team to build the software they need with AI, so you stop paying for tools that don't fit and start owning ones that do.",
+  secondaryCta: { label: "Or book a call with us", intent: "call" as const },
+  byline: "Nathaniel Gate and Oree Golan, London",
 };
 
-/* ------------------------------------------------------------------ */
-/* Why now (evidence)                                                  */
-/* ------------------------------------------------------------------ */
-
 export const whyNow = {
-  index: "01",
-  eyebrow: "Why now",
-  title: "AI changed how software gets built. Most companies still rent it.",
+  title: "Why bother now?",
   stats: [
     {
       value: "55%",
-      label: "faster coding with an AI assistant, in a controlled trial",
+      label:
+        "Developers finished a coding task 55% faster with an AI assistant in a controlled trial. Building your own tools has never been this cheap.",
       source: "peng-copilot-2023",
     },
     {
       value: "+14%",
-      label: "rise in software spend in 2025, driven by price rises",
+      label: "Software spending rose 14% in 2025, and Gartner puts much of that down to vendors raising prices.",
       source: "gartner-it-spend-2025",
-    },
-    {
-      value: "71%",
-      label: "of projects hit target when the business co-builds, vs 48%",
-      source: "gartner-digital-2024",
     },
   ] satisfies Stat[],
 };
 
-/* ------------------------------------------------------------------ */
-/* What we do                                                          */
-/* ------------------------------------------------------------------ */
-
 export const whatWeDo = {
-  index: "02",
-  eyebrow: "What you get",
-  title: "A better team. Systems you own. Lower costs.",
-  pillars: [
+  title: "What actually changes",
+  items: [
     {
-      n: "01",
-      title: "An AI-native team",
-      body: "Your people learn to build and run software with AI. The skill stays when we leave.",
+      title: "Your team learns to build",
+      body: "We pick a handful of people who know your processes, usually ops leads or analysts, and teach them to build and fix internal software with AI. They keep that skill after we've gone.",
     },
     {
-      n: "02",
-      title: "Systems you own",
-      body: "We replace costly, ill-fitting tools with software built around how you actually work.",
+      title: "You own your systems",
+      body: "The tools that never quite fit get replaced with ones built around how you work. The code and data live in your accounts from day one.",
     },
     {
-      n: "03",
-      title: "Lower costs",
-      body: "Fewer licences, less manual admin, no agency invoice for every change.",
+      title: "Your bills come down",
+      body: "Fewer licences, less copying data between systems, and no agency invoice every time you want a field moved.",
+    },
+    {
+      title: "Changes take days",
+      body: "When the business changes, your own people update the software that week instead of waiting on a vendor's roadmap.",
     },
   ],
-  buildsLabel: "What teams build with us",
+  buildsLabel: "Things we can help your team build",
   builds: [
     "Approval flows",
     "Ops dashboards",
     "Client portals",
-    "Lean CRM",
-    "Reporting packs",
+    "A lighter CRM",
+    "Board reporting",
     "Case management",
-    "AI agents",
+    "AI agents for admin",
     "Internal tools",
   ],
 };
 
-/* ------------------------------------------------------------------ */
-/* Method                                                              */
-/* ------------------------------------------------------------------ */
-
 export const method = {
-  index: "03",
-  eyebrow: "How it works",
-  title: "Five steps. Each one hands more to your team.",
+  title: "How a project runs",
+  lede: "Each stage hands a bit more of the work to your people. By the end they're doing nearly all of it.",
   phases: [
     {
-      n: "01",
+      n: "1",
       name: "Diagnose",
       duration: "3 weeks",
-      body: "Find where cost and friction sit. Decide what to build, keep and cut.",
+      body: "We look at what you pay for and where people lose time, then agree what's worth building.",
       forta: 85,
     },
     {
-      n: "02",
+      n: "2",
       name: "Design",
       duration: "2 weeks",
-      body: "Spec the first systems with the people who will use them.",
+      body: "We plan the first system with the people who'll use it every day.",
       forta: 65,
     },
     {
-      n: "03",
+      n: "3",
       name: "Build",
       duration: "6 weeks",
-      body: "Your builders ship real systems alongside us, with AI, from week one.",
+      body: "Your people build real systems alongside us, using AI, from the first week.",
       forta: 45,
     },
     {
-      n: "04",
+      n: "4",
       name: "Enable",
       duration: "4 weeks",
-      body: "Training and playbooks. Your team leads; we coach.",
+      body: "Your team takes the lead on the next system while we coach.",
       forta: 25,
     },
     {
-      n: "05",
+      n: "5",
       name: "Hand over",
       duration: "1 week",
-      body: "Your team ships a change without us. Then we leave.",
+      body: "Your team ships a change without our help, and that's when we step back.",
       forta: 5,
     },
   ],
   gaugeLabels: { forta: "Forta", client: "Your team" },
 };
 
-/* ------------------------------------------------------------------ */
-/* Team                                                                */
-/* ------------------------------------------------------------------ */
-
 export const team = {
-  index: "05",
-  eyebrow: "Who we are",
-  title: "Two directors. One built HubSpot's AI agents. One brings AI and automation to Moody's.",
+  title: "Who you'd be working with",
   people: [
     {
       name: "Nathaniel Gate",
       role: "Director",
       photo: "/team/nathaniel.jpg",
       linkedin: "https://www.linkedin.com/in/nathaniel-gate-512b69247/",
-      headline: "AI, automation and operating systems at Moody's",
+      headline: "Works on AI, automation and operating systems at Moody's",
       credentials: [
         "Senior Associate, Moody's",
         "Former Head Consultant, CWPG",
@@ -169,7 +134,7 @@ export const team = {
       role: "Director",
       photo: "/team/oree.jpg",
       linkedin: "https://www.linkedin.com/in/oree-golan/",
-      headline: "Built HubSpot's AI Agent Platform",
+      headline: "Helped build HubSpot's AI agent platform",
       credentials: [
         "Former Senior Software Engineer, HubSpot",
         "Product Builder, Anima",
@@ -179,55 +144,38 @@ export const team = {
   ],
 };
 
-/* ------------------------------------------------------------------ */
-/* Engagement model                                                    */
-/* ------------------------------------------------------------------ */
-
 export const engagement = {
-  index: "06",
-  eyebrow: "Working with us",
-  title: "Start small. Commit only if the numbers work.",
+  title: "What it costs",
   stages: [
     {
+      name: "Free stack rebuild",
+      shape: "Free, back in 3 hours",
+      body: "Send us your tools and we send back a version built around your company.",
+    },
+    {
       name: "Operational review",
-      shape: "Fixed fee · 3 weeks",
-      body: "Your costs, your friction, your business case. Yours to keep either way.",
+      shape: "Fixed fee, 3 weeks",
+      body: "We map your costs and the time your team loses, and write up the business case. You keep it whether or not you go ahead.",
     },
     {
       name: "Transformation",
-      shape: "From £75k · 4 months",
-      body: "Build the first systems and train your team, in fixed-price phases.",
-    },
-    {
-      name: "Support",
-      shape: "Optional · quarterly",
-      body: "Reviews and coaching as you grow. Built to taper off.",
+      shape: "From £75k, about 4 months",
+      body: "We build the first systems with your team and train them as we go, priced in fixed phases.",
     },
   ],
-  ctas: { primary: "Book a strategy call", secondary: "Request a review" },
-  commitments: [
-    "Code and data in your systems from day one",
-    "Results measured against a baseline",
-    "We tell you what not to build",
-  ],
+  note: "After that, quarterly support is there if you want it. It is designed to shrink as your team gets more confident.",
 };
 
-/* ------------------------------------------------------------------ */
-/* Closing CTA and contact                                             */
-/* ------------------------------------------------------------------ */
-
 export const closing = {
-  index: "08",
-  eyebrow: "Begin",
-  title: ["Make your company", "AI-native."],
-  body: "A 30-minute call is enough to tell whether there is a case.",
+  title: "Rather talk it through?",
+  body: "Tell us a bit about your company and one of us will get back to you within two working days.",
   intents: [
-    { id: "call", label: "Book a strategy call" },
-    { id: "review", label: "Request a review" },
-    { id: "engagement", label: "Discuss a transformation" },
+    { id: "call", label: "Book a call" },
+    { id: "review", label: "Ask about a review" },
+    { id: "engagement", label: "Discuss a project" },
   ] as const,
-  direct: { label: "Or write to us", email: "hello@forta.example" },
-  responseNote: "A director replies within two working days.",
+  direct: { label: "Or email", email: "hello@forta.example" },
+  responseNote: "Nathaniel or Oree will reply within two working days.",
 };
 
 export type Intent = (typeof closing.intents)[number]["id"];

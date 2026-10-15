@@ -21,7 +21,7 @@ export function Method() {
   return (
     <Section id="method" tone="ink" labelledBy="method-heading">
       <Container>
-        <SectionHeader id="method-heading" index={method.index} eyebrow={method.eyebrow} title={method.title} />
+        <SectionHeader id="method-heading" title={method.title} lede={method.lede} />
 
         <div className="grid gap-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-20">
           <aside className="hidden lg:block">
@@ -79,7 +79,7 @@ function PhaseItem({
         >
           {phase.name}
         </h3>
-        <span className="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-steel-500">{phase.duration}</span>
+        <span className="text-[0.85rem] text-steel-500">{phase.duration}</span>
       </div>
       <p className="mt-4 max-w-xl text-[1.02rem] leading-relaxed text-steel-300">{phase.body}</p>
       {/* Inline split bar, shown on all sizes so mobile gets the same idea */}
@@ -113,7 +113,7 @@ function SplitBar({ forta }: { forta: number }) {
           transition={{ duration: reduce ? 0 : 0.9, ease: [0.16, 1, 0.3, 1] }}
         />
       </div>
-      <div className="mt-2 flex justify-between font-mono text-[0.64rem] uppercase tracking-[0.14em] text-steel-500">
+      <div className="mt-2 flex justify-between text-[0.85rem] text-steel-500">
         <span>
           {method.gaugeLabels.forta} {forta}%
         </span>
@@ -130,7 +130,7 @@ function OwnershipGauge({ phase, index }: { phase: Phase; index: number }) {
   const client = 100 - phase.forta;
   return (
     <div className="edge-steel relative bg-ink-850 p-8" aria-hidden>
-      <div className="flex items-center justify-between font-mono text-[0.68rem] uppercase tracking-[0.18em] text-steel-500">
+      <div className="flex items-center justify-between text-[0.85rem] text-steel-500">
         <span>Who holds the pen</span>
         <span>
           Phase {phase.n} / 0{method.phases.length}
@@ -139,14 +139,14 @@ function OwnershipGauge({ phase, index }: { phase: Phase; index: number }) {
 
       <div className="mt-10 flex items-end justify-between">
         <div>
-          <p className="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-signal">{method.gaugeLabels.client}</p>
+          <p className="text-[0.85rem] text-signal">{method.gaugeLabels.client}</p>
           <p className="mt-2 text-[5.5rem] font-medium leading-none tracking-[-0.06em] text-white tabular-nums">
             {client}
             <span className="text-[2.5rem] text-steel-500">%</span>
           </p>
         </div>
         <div className="text-right">
-          <p className="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-steel-500">{method.gaugeLabels.forta}</p>
+          <p className="text-[0.85rem] text-steel-500">{method.gaugeLabels.forta}</p>
           <p className="mt-2 text-[2rem] font-medium leading-none tracking-[-0.04em] text-steel-400 tabular-nums">
             {phase.forta}%
           </p>

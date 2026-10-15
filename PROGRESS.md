@@ -2,6 +2,22 @@
 
 Status as of 15 Oct 2026: **complete.** Runs locally; source published to GitHub (Nathaniel-Gate/forta). Not deployed to any host.
 
+## Revision 3 (15 Oct 2026): free stack rebuild offer, AI tells removed
+
+- Lead offer: "Get your tech stack rebuilt, free", back within three hours. A 3-field form (tools
+  as chips with quick picks, company, work email) sits in the hero and on /stack, a stand-alone
+  page for outreach links. Requests are validated by a shared Zod schema and stored locally.
+- AI-tell audit, based on published lists of AI web-design and writing tells (925 Studios,
+  Noqta, Wikipedia-derived writing guides). Removed: numbered mono eyebrows and uppercase tracked
+  labels, the pulsing dot, serif-italic accent words, blueprint grid, grain and glow backgrounds,
+  gradient hairlines, glowing buttons, fade-ins on every block, Lenis smooth scrolling, the hero
+  drawing, arrows on secondary buttons and middle-dot separators.
+- Copy rewritten in plain first-person sentences: no fragment chains, no forced triplets
+  (sections now have 2, 4, 5 or 7 items), named people in the hero, and no implied track record.
+- QA: no console errors at 1440, 834 and 390 in both motion modes, no overflow, 0 axe violations,
+  both stack forms validate, save and confirm.
+- Open: the three-hour promise has no alert behind it yet (see README).
+
 ## Revision 2 (15 Oct 2026): AI-native, 10-second site
 
 Owner feedback: too much text; visitors give it under 10 seconds; the real offer is
