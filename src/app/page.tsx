@@ -1,22 +1,19 @@
 import { Footer } from "@/components/layout/Footer";
 import { Nav } from "@/components/layout/Nav";
-import { Archetypes } from "@/components/sections/Archetypes";
 import { Calculator } from "@/components/sections/Calculator";
 import { Contact } from "@/components/sections/Contact";
-import { CostOfRenting } from "@/components/sections/CostOfRenting";
 import { Engagement } from "@/components/sections/Engagement";
 import { Faq } from "@/components/sections/Faq";
 import { Hero } from "@/components/sections/Hero";
 import { Method } from "@/components/sections/Method";
-import { Outcomes } from "@/components/sections/Outcomes";
-import { Positioning } from "@/components/sections/Positioning";
-import { Systems } from "@/components/sections/Systems";
-import { ThirdPath } from "@/components/sections/ThirdPath";
+import { Team } from "@/components/sections/Team";
+import { WhatWeDo } from "@/components/sections/WhatWeDo";
+import { WhyNow } from "@/components/sections/WhyNow";
 
 /**
- * Page order is the argument: the problem (cost), the idea (third path),
- * the payoff (outcomes), the method, the scope, the numbers, the category,
- * the fit, the commercial shape, the objections, then the ask.
+ * Built for a 10-second visit: the hero alone carries the offer and three
+ * numbers. Then proof, the offer, the method, the savings, the people, the
+ * commercial shape, objections, and the ask.
  */
 export default function Home() {
   return (
@@ -24,14 +21,11 @@ export default function Home() {
       <Nav />
       <main id="main">
         <Hero />
-        <CostOfRenting />
-        <ThirdPath />
-        <Outcomes />
+        <WhyNow />
+        <WhatWeDo />
         <Method />
-        <Systems />
         <Calculator />
-        <Positioning />
-        <Archetypes />
+        <Team />
         <Engagement />
         <Faq />
         <Contact />

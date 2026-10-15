@@ -2,41 +2,39 @@
 
 export const brand = {
   name: "Forta",
-  descriptor: "Software ownership for operational firms",
+  descriptor: "AI-native transformation",
   location: "London, United Kingdom",
 };
 
 export const navLinks = [
-  { label: "Approach", href: "#approach" },
-  { label: "Method", href: "#method" },
+  { label: "What you get", href: "#what" },
+  { label: "How it works", href: "#method" },
   { label: "Savings", href: "#calculator" },
-  { label: "Engagements", href: "#engagement" },
+  { label: "Team", href: "#team" },
   { label: "FAQ", href: "#faq" },
 ];
 
-export const navCta = { label: "Request a review", intent: "review" as const };
+export const navCta = { label: "Book a call", intent: "call" as const };
 
 export const footer = {
-  statement: "Forta turns software renters into software owners.",
+  statement: "Forta makes companies AI-native.",
   columns: [
     {
       title: "Explore",
       links: [
-        { label: "The third path", href: "#approach" },
-        { label: "The Forta method", href: "#method" },
-        { label: "What we build", href: "#systems" },
+        { label: "What you get", href: "#what" },
+        { label: "How it works", href: "#method" },
         { label: "Savings estimate", href: "#calculator" },
       ],
     },
     {
-      title: "Engage",
+      title: "Company",
       links: [
-        { label: "Operational review", href: "#engagement" },
-        { label: "Archetypes", href: "#archetypes" },
-        { label: "Questions", href: "#faq" },
+        { label: "Team", href: "#team" },
+        { label: "Working with us", href: "#engagement" },
         { label: "Contact", href: "#contact" },
       ],
     },
   ],
-  legal: "Forta is a working brand concept. Figures are cited to their sources below.",
+  legal: "Figures are cited to their sources above.",
 };

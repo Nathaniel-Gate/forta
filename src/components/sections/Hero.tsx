@@ -28,7 +28,7 @@ export function Hero() {
       ref={ref}
       id="top"
       aria-labelledby="hero-heading"
-      className="grain relative isolate overflow-hidden bg-ink-950 pt-[calc(var(--nav-h)+3.5rem)] sm:pt-[calc(var(--nav-h)+5rem)]"
+      className="grain relative isolate overflow-hidden bg-ink-950 pt-[calc(var(--nav-h)+2.5rem)] sm:pt-[calc(var(--nav-h)+3rem)]"
     >
       {/* Blueprint field, faded towards the edges */}
       <motion.div
@@ -62,7 +62,7 @@ export function Hero() {
 
             <h1
               id="hero-heading"
-              className="mt-8 text-[clamp(3rem,8.4vw,7.6rem)] font-medium leading-[0.92] tracking-[-0.055em] text-white"
+              className="mt-6 text-[clamp(3rem,7.2vw,6.4rem)] font-medium leading-[0.92] tracking-[-0.055em] text-white"
             >
               {hero.headline.map((line, i) => (
                 <span key={line} className="-mb-[0.08em] block overflow-hidden pb-[0.12em]">
@@ -84,12 +84,12 @@ export function Hero() {
 
             <motion.p
               {...rise(0.55)}
-              className="mt-9 max-w-[36rem] text-pretty text-[1.08rem] leading-relaxed text-steel-300 sm:text-[1.2rem]"
+              className="mt-7 max-w-[34rem] text-pretty text-[1.08rem] leading-relaxed text-steel-300 sm:text-[1.15rem]"
             >
               {hero.subhead}
             </motion.p>
 
-            <motion.div {...rise(0.7)} className="mt-10 flex flex-col gap-3 xs:flex-row xs:flex-wrap">
+            <motion.div {...rise(0.7)} className="mt-8 flex flex-col gap-3 xs:flex-row xs:flex-wrap">
               <ButtonLink intent={hero.primaryCta.intent}>{hero.primaryCta.label}</ButtonLink>
               <ButtonLink href={hero.secondaryCta.href} variant="ghost" className="text-white">
                 {hero.secondaryCta.label}
@@ -97,7 +97,7 @@ export function Hero() {
             </motion.div>
           </div>
 
-          <motion.div style={{ y: drawingY }} className="relative mx-auto w-full max-w-[34rem] lg:max-w-none">
+          <motion.div style={{ y: drawingY }} className="relative mx-auto hidden w-full lg:block lg:max-w-[30rem]">
             <div className="relative">
               {/* Corner registration marks frame the drawing like a print */}
               {["left-0 top-0 border-l border-t", "right-0 top-0 border-r border-t", "left-0 bottom-0 border-l border-b", "right-0 bottom-0 border-r border-b"].map(
@@ -112,15 +112,17 @@ export function Hero() {
 
         <motion.dl
           {...rise(0.9)}
-          className="mt-20 grid border-t border-white/[0.09] sm:mt-28 md:grid-cols-3"
+          className="mt-12 grid border-t border-white/[0.09] sm:mt-14 md:grid-cols-3"
         >
           {hero.proof.map((p, i) => (
             <div
-              key={p.k}
-              className={`py-7 md:py-9 ${i > 0 ? "border-t border-white/[0.09] md:border-l md:border-t-0 md:pl-8" : "md:pr-8"}`}
+              key={p.value}
+              className={`flex flex-col-reverse py-6 md:py-7 ${i > 0 ? "border-t border-white/[0.09] md:border-l md:border-t-0 md:pl-8" : "md:pr-8"}`}
             >
-              <dt className="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-steel-500">{p.k}</dt>
-              <dd className="mt-3 text-[1.02rem] leading-snug text-stone-100">{p.v}</dd>
+              <dt className="mt-2 text-[1rem] leading-snug text-steel-300">{p.label}</dt>
+              <dd className="text-[clamp(2.4rem,4vw,3.4rem)] font-medium leading-none tracking-[-0.045em] text-white">
+                {p.value}
+              </dd>
             </div>
           ))}
         </motion.dl>

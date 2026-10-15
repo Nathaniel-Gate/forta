@@ -21,7 +21,7 @@ export function Method() {
   return (
     <Section id="method" tone="ink" labelledBy="method-heading">
       <Container>
-        <SectionHeader id="method-heading" index={method.index} eyebrow={method.eyebrow} title={method.title} lede={method.lede} />
+        <SectionHeader id="method-heading" index={method.index} eyebrow={method.eyebrow} title={method.title} />
 
         <div className="grid gap-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-20">
           <aside className="hidden lg:block">
@@ -61,7 +61,7 @@ function PhaseItem({
   }, [inView, onActive]);
 
   return (
-    <li ref={ref} className="relative pb-16 pl-10 last:pb-0 sm:pl-14">
+    <li ref={ref} className="relative pb-12 pl-10 last:pb-0 sm:pl-14">
       <span
         aria-hidden
         className={cn(
@@ -82,10 +82,6 @@ function PhaseItem({
         <span className="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-steel-500">{phase.duration}</span>
       </div>
       <p className="mt-4 max-w-xl text-[1.02rem] leading-relaxed text-steel-300">{phase.body}</p>
-      <p className="mt-5 max-w-xl border-l border-white/15 pl-4 text-[0.9rem] leading-snug text-stone-100">
-        <span className="mb-1 block font-mono text-[0.64rem] uppercase tracking-[0.16em] text-steel-500">Leaves behind</span>
-        {phase.output}
-      </p>
       {/* Inline split bar, shown on all sizes so mobile gets the same idea */}
       <div className="mt-6 max-w-xl lg:hidden">
         <SplitBar forta={phase.forta} />
@@ -184,7 +180,7 @@ function OwnershipGauge({ phase, index }: { phase: Phase; index: number }) {
         ))}
       </div>
       <p className="mt-4 text-[1.4rem] font-medium tracking-[-0.03em] text-white">{phase.name}</p>
-      <p className="mt-1 text-[0.92rem] text-steel-400">{phase.output}</p>
+      <p className="mt-1 text-[0.92rem] text-steel-400">{phase.duration}</p>
     </div>
   );
 }

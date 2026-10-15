@@ -9,12 +9,12 @@ const newsreader = Newsreader({ variable: "--font-newsreader", subsets: ["latin"
 const plexMono = IBM_Plex_Mono({ variable: "--font-plex-mono", subsets: ["latin"], weight: ["400", "500"], display: "swap" });
 
 export const metadata: Metadata = {
-  title: "Forta · Stop renting the software you run on",
+  title: "Forta · Make your company AI-native",
   description:
-    "Forta replaces costly, ill-fitting SaaS and manual workarounds with bespoke internal systems, and trains your people to own, run and extend them.",
+    "Forta trains your team to build with AI, replaces the software you rent with systems you own, and cuts your costs.",
   openGraph: {
-    title: "Forta · Stop renting the software you run on",
-    description: "Bespoke systems. In-house capability. Measured ROI.",
+    title: "Forta · Make your company AI-native",
+    description: "An AI-native team. Systems you own. Lower costs.",
     type: "website",
     locale: "en_GB",
   },

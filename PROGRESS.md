@@ -2,6 +2,25 @@
 
 Status as of 15 Oct 2026: **complete.** Runs locally; source published to GitHub (Nathaniel-Gate/forta). Not deployed to any host.
 
+## Revision 2 (15 Oct 2026): AI-native, 10-second site
+
+Owner feedback: too much text; visitors give it under 10 seconds; the real offer is
+a better team and a step into AI-native ways of working; add the two directors.
+
+- Repositioned to "Make your company AI-native." Ownership and cost savings are now supporting pillars.
+- Hero shows the offer plus three big numbers above the fold at 1440x900 (16 weeks, 100% yours, 3-week review).
+- Cut from 12 sections to 9: removed the third-path essay, outcomes list, systems catalogue,
+  comparison table and archetypes. FAQ cut to six one-to-two sentence answers.
+- New sections: Why now (three sourced numbers), What you get (three pillars plus a list of what teams build), Team.
+- Team: Nathaniel Gate (Senior Associate, Moody's; MSc Warwick) and Oree Golan (former Senior Software
+  Engineer, HubSpot, Agent Platform; Product Builder, Anima; co-founder and CTO, unidingo), both Directors.
+  Credentials and photos taken from their LinkedIn profiles on 15 Oct 2026. Photos render greyscale, colour on hover.
+- Sources trimmed to the four still cited on the page.
+- QA rerun: no console errors at 1440, 834 and 390 in both motion modes, no overflow, form flow passes, 0 axe violations.
+- The hero drawing is hidden below 1024px so the numbers come up sooner on phones.
+
+The sections below record the first build; parts of them describe sections that no longer exist.
+
 ## Plan (as executed)
 
 1. Research: positioning, credible benchmark data, library choices.

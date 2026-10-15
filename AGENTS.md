@@ -4,8 +4,10 @@ Read this before changing anything. It is short on purpose.
 
 ## What this is
 
-A single-page marketing site for Forta, a consultancy that replaces ill-fitting
-SaaS with bespoke internal systems and trains client teams to own them.
+A single-page marketing site for Forta, which makes companies AI-native: client
+teams learn to build with AI, and rented software is replaced by systems they own.
+Written for a 10-second visit: the hero must carry the offer and three numbers
+above the fold on a laptop; every section lands from its title and big numbers.
 Next.js 16 (App Router, Cache Components on), React 19, TypeScript, Tailwind v4.
 Hosted on GitHub as a shareable repo. Do not deploy anywhere without the owner asking.
 
@@ -29,18 +31,19 @@ src/
     intent.ts            DOM events: CTA -> form intent, calculator -> form estimate
     format.ts, cn.ts
   components/
-    ui/        primitives (Section, SectionHeader, Reveal, ButtonLink, CountUp, SourceRef, Logo, MarkIcon)
+    ui/        primitives (Section, SectionHeader, Reveal, ButtonLink, CountUp, SourceRef, Logo)
     layout/    Nav, Footer, SmoothScroll
     sections/  one file per page section
-    visuals/   OwnershipSchematic (hero drawing), CostCurve
+    visuals/   OwnershipSchematic (hero drawing, desktop only)
+public/team/   director photos (from LinkedIn), rendered greyscale
 ```
 
 ## Rules
 
 1. **Copy lives in `src/content/`.** Components only lay it out.
 2. **No statistic without a source.** Add it to `sources.ts` first, cite with
-   `<SourceRef id>` or `<SourceLabel id>`. Never invent numbers or clients.
-   Archetypes must stay labelled illustrative.
+   `<SourceRef id>` or `<SourceLabel id>`. Never invent numbers, clients or
+   credentials. Team credentials must match the directors' LinkedIn profiles.
 3. **Tokens, not hex.** Colours, fonts, easings are in `globals.css` `@theme`.
    `steel-500` is the dimmest text allowed on dark surfaces (contrast floor).
    On paper surfaces, keep ink text at 70% opacity or more.

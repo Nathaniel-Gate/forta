@@ -13,12 +13,12 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { SourceRef } from "@/components/ui/SourceRef";
 
 const copy = {
-  index: "06",
+  index: "04",
   eyebrow: "Savings estimate",
-  title: "What is the current arrangement costing you?",
-  lede: "Six rough numbers give a first view of the annual upside. Adjust them freely; every assumption is shown below the result.",
+  title: "What could you save?",
+  lede: "Six rough numbers. Your annual upside, instantly.",
   disclaimer:
-    "Illustrative only. This is a directional estimate from your inputs and the stated assumptions, not a formal assessment or a forecast of results. An operational review replaces every assumption here with measured data.",
+    "Illustrative estimate, not a forecast. The operational review replaces these assumptions with your real data.",
 };
 
 function formatValue(spec: InputSpec, v: number) {
@@ -101,7 +101,7 @@ export function Calculator() {
                 />
               </p>
               <p className="mt-4 max-w-md text-[0.95rem] leading-relaxed text-steel-400">
-                Conservative to expected case. Combines software spend retired (cash) with the value of time returned to your teams (capacity).
+                Conservative to expected case: software you stop paying for, plus time your team gets back.
               </p>
 
               <dl className="mt-10 grid gap-px bg-white/[0.07] sm:grid-cols-2">
@@ -147,7 +147,7 @@ export function Calculator() {
                 onClick={() => requestIntent("review")}
                 className="group mt-10 flex min-h-12 w-full items-center justify-between bg-white px-6 text-[0.95rem] font-medium text-ink-950 transition-colors hover:bg-stone-100"
               >
-                Test these numbers in an operational review
+                Check these numbers with us
                 <svg aria-hidden viewBox="0 0 16 16" className="h-3.5 w-3.5 transition-transform duration-500 group-hover:translate-x-1">
                   <path d="M1 8h13M9 3l5 5-5 5" fill="none" stroke="currentColor" strokeWidth="1.4" />
                 </svg>

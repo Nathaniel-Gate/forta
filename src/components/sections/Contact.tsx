@@ -29,7 +29,7 @@ export function Contact() {
     formState: { errors },
   } = useForm<EnquiryInput, unknown, Enquiry>({
     resolver: zodResolver(enquirySchema),
-    defaultValues: { intent: "review", message: "", website: "" },
+    defaultValues: { intent: "call", message: "", website: "" },
     mode: "onTouched",
   });
 
@@ -124,7 +124,7 @@ export function Contact() {
                   <button
                     type="button"
                     onClick={() => {
-                      reset({ intent: "review", message: "", website: "" });
+                      reset({ intent: "call", message: "", website: "" });
                       setAttachEstimate(false);
                       setStatus({ state: "idle" });
                     }}

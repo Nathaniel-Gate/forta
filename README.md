@@ -1,8 +1,8 @@
 # Forta
 
-Marketing site for **Forta**, a consultancy that helps UK mid-market firms cut
-software costs, improve operations and build the internal capability to create
-and maintain bespoke software themselves. "Stop renting the software you run on."
+Marketing site for **Forta**, which makes companies AI-native: it trains client
+teams to build with AI, replaces rented software with systems they own, and cuts
+costs. Directors: Nathaniel Gate and Oree Golan.
 
 ## Run it locally
 

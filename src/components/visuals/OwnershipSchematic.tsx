@@ -110,7 +110,7 @@ export function OwnershipSchematic({ className }: { className?: string }) {
           fill="rgb(8 9 10 / 0.75)"
         />
       ))}
-      {["WORKFLOW", "RULES", "RECORDS"].map((t, k) => (
+      {["AI AGENTS", "WORKFLOW", "RECORDS"].map((t, k) => (
         <motion.text key={t} {...fade(1.6 + k * 0.08)} x={56 + k * 152} y={276} className="fill-steel-300 font-mono" fontSize="8" letterSpacing="1.2">
           {t}
         </motion.text>
