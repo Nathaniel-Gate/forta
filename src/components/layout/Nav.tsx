@@ -118,6 +118,7 @@ export function Nav() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
+            <div className="bg-blueprint absolute inset-0 opacity-60" aria-hidden />
             <ul className="relative flex flex-col px-[var(--gutter)] pt-8">
               {navLinks.map((l, i) => (
                 <motion.li
@@ -133,6 +134,7 @@ export function Nav() {
                     className="flex items-baseline justify-between py-5 text-3xl font-medium tracking-[-0.03em] text-white"
                   >
                     {l.label}
+                    <span className="font-mono text-xs text-steel-400">0{i + 1}</span>
                   </a>
                 </motion.li>
               ))}

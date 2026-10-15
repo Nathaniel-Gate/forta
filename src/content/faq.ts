@@ -1,6 +1,8 @@
 /** FAQ copy. Short, plain answers. */
 
 export const faq = {
+  index: "07",
+  eyebrow: "Questions",
   title: "Questions people ask us",
   ctaLead: "If yours isn't here, ask us directly.",
   cta: "Book a call",

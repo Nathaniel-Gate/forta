@@ -206,9 +206,12 @@ export function StackForm({ source, className }: { source: string; className?: s
       <button
         type="submit"
         disabled={status.state === "sending"}
-        className="mt-7 flex min-h-13 w-full items-center justify-center bg-white px-6 py-3.5 text-[1rem] font-medium text-ink-950 transition-colors hover:bg-stone-200 disabled:opacity-70"
+        className="group mt-7 flex min-h-13 w-full items-center justify-between bg-white px-6 py-3.5 text-[1rem] font-medium text-ink-950 shadow-[0_0_0_1px_rgb(255_255_255/0.4),0_0_32px_-8px_rgb(255_255_255/0.5)] transition-[background-color,box-shadow] hover:shadow-[0_0_0_1px_rgb(91_140_255/0.6),0_0_36px_-6px_rgb(91_140_255/0.55)] disabled:opacity-70"
       >
-        {status.state === "sending" ? "Sending…" : s.submit}
+        <span>{status.state === "sending" ? "Sending…" : s.submit}</span>
+        <svg aria-hidden viewBox="0 0 16 16" className="h-3.5 w-3.5 transition-transform duration-500 group-hover:translate-x-1">
+          <path d="M1 8h13M9 3l5 5-5 5" fill="none" stroke="currentColor" strokeWidth="1.4" />
+        </svg>
       </button>
       <p className="mt-3 text-[0.85rem] text-steel-400">{s.promise}</p>
     </form>

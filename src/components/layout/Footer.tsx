@@ -16,13 +16,13 @@ export function Footer() {
             <p className="mt-6 max-w-sm text-[1.35rem] leading-snug tracking-[-0.02em] text-steel-200">
               {footer.statement}
             </p>
-            <p className="mt-6 text-[0.85rem] text-steel-500">
+            <p className="mt-6 font-mono text-[0.7rem] uppercase tracking-[0.16em] text-steel-500">
               {brand.descriptor} · {brand.location}
             </p>
           </div>
           {footer.columns.map((col) => (
             <div key={col.title}>
-              <h3 className="text-[0.85rem] text-steel-500">{col.title}</h3>
+              <h3 className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-steel-500">{col.title}</h3>
               <ul className="mt-5 space-y-3">
                 {col.links.map((l) => (
                   <li key={l.href + l.label}>
@@ -37,7 +37,7 @@ export function Footer() {
         </div>
 
         <section id="references" aria-labelledby="references-heading" className="mt-24 border-t border-white/[0.08] pt-10">
-          <h3 id="references-heading" className="text-[0.85rem] text-steel-500">
+          <h3 id="references-heading" className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-steel-500">
             References
           </h3>
           <ol className="mt-6 grid gap-x-12 gap-y-6 md:grid-cols-2">
@@ -61,7 +61,7 @@ export function Footer() {
           </ol>
         </section>
 
-        <div className="mt-20 flex flex-col gap-3 border-t border-white/[0.08] py-8 text-[0.85rem] text-steel-500 sm:flex-row sm:justify-between">
+        <div className="mt-20 flex flex-col gap-3 border-t border-white/[0.08] py-8 font-mono text-[0.68rem] uppercase tracking-[0.14em] text-steel-500 sm:flex-row sm:justify-between">
           <span>© 2026 Forta</span>
           <span>{footer.legal}</span>
         </div>

@@ -72,18 +72,27 @@ export function Contact() {
   const intentLabel = closing.intents.find((i) => i.id === intent)?.label ?? "";
 
   return (
-    <section id="contact" aria-labelledby="contact-heading" className="relative isolate overflow-hidden bg-ink-950 py-24 sm:py-32 lg:py-40">
+    <section id="contact" aria-labelledby="contact-heading" className="grain relative isolate overflow-hidden bg-ink-950 py-24 sm:py-32 lg:py-40">
+      <div aria-hidden className="bg-blueprint absolute inset-0 -z-10 [mask-image:radial-gradient(ellipse_70%_60%_at_20%_30%,black,transparent_75%)]" />
       <Container>
         <div className="grid gap-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-20">
           <div>
+            <Reveal>
+              <div className="flex items-center gap-4 border-t border-white/[0.09] pt-4 font-mono text-[0.7rem] uppercase tracking-[0.18em] text-steel-400">
+                <span>{closing.index}</span>
+                <span aria-hidden className="h-px w-6 bg-current opacity-40" />
+                <span>{closing.eyebrow}</span>
+              </div>
+            </Reveal>
             <Reveal delay={0.05}>
-              <h2 id="contact-heading" className="text-[clamp(2.4rem,5vw,4rem)] font-medium leading-[1] tracking-[-0.045em] text-white">
-                {closing.title}
+              <h2 id="contact-heading" className="mt-10 text-[clamp(2.8rem,6.6vw,5.8rem)] font-medium leading-[0.95] tracking-[-0.05em] text-white">
+                {closing.title[0]}
+                <span className="block font-serif font-normal italic tracking-[-0.03em] text-steel-300">{closing.title[1]}</span>
               </h2>
             </Reveal>
             <Reveal delay={0.1}>
               <p className="mt-9 max-w-lg text-pretty text-[1.08rem] leading-relaxed text-steel-300">{closing.body}</p>
-              <p className="mt-10 text-[0.85rem] text-steel-500">{closing.direct.label}</p>
+              <p className="mt-10 font-mono text-[0.68rem] uppercase tracking-[0.16em] text-steel-500">{closing.direct.label}</p>
               <a
                 href={`mailto:${closing.direct.email}`}
                 className="mt-2 inline-block text-[1.15rem] text-white underline decoration-white/25 underline-offset-[6px] transition-colors hover:decoration-white"
@@ -109,7 +118,7 @@ export function Contact() {
                   <span aria-hidden className="h-2.5 w-2.5 rotate-45 bg-signal shadow-[0_0_16px_rgb(91_140_255/0.8)]" />
                   <h3 className="mt-8 text-[2rem] font-medium tracking-[-0.035em] text-white">Thank you. Your enquiry is with us.</h3>
                   <p className="mt-4 max-w-md text-[1.02rem] leading-relaxed text-steel-300">{closing.responseNote}</p>
-                  <p className="mt-8 text-[0.85rem] text-steel-500">
+                  <p className="mt-8 font-mono text-[0.72rem] uppercase tracking-[0.16em] text-steel-500">
                     Reference <span className="text-stone-100">{status.reference}</span>
                   </p>
                   <button
@@ -135,7 +144,7 @@ export function Contact() {
                   aria-describedby="form-note"
                 >
                   <fieldset>
-                    <legend className="text-[0.85rem] text-steel-500">I would like to</legend>
+                    <legend className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-steel-500">I would like to</legend>
                     <div className="mt-4 grid gap-2 sm:grid-cols-3">
                       {closing.intents.map((opt) => (
                         <label

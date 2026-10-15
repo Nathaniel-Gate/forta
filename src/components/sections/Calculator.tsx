@@ -13,6 +13,8 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { SourceRef } from "@/components/ui/SourceRef";
 
 const copy = {
+  index: "04",
+  eyebrow: "Savings estimate",
   title: "What could you save?",
   lede: "Put in rough numbers for your company and the estimate updates as you go.",
   disclaimer:
@@ -56,18 +58,18 @@ export function Calculator() {
   return (
     <Section id="calculator" tone="ink" labelledBy="calculator-heading">
       <Container>
-        <SectionHeader id="calculator-heading" title={copy.title} lede={copy.lede} />
+        <SectionHeader id="calculator-heading" index={copy.index} eyebrow={copy.eyebrow} title={copy.title} lede={copy.lede} />
 
         <div className="grid gap-px bg-white/[0.08] lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
           {/* Inputs */}
           <Reveal className="bg-ink-900 p-6 sm:p-10">
             <form onSubmit={(e) => e.preventDefault()} aria-label="Savings estimate inputs">
-              <div className="flex items-center justify-between text-[0.85rem] text-steel-500">
+              <div className="flex items-center justify-between font-mono text-[0.68rem] uppercase tracking-[0.18em] text-steel-500">
                 <span>Your inputs</span>
                 <button
                   type="button"
                   onClick={() => setInputs(defaultInputs)}
-                  className="text-steel-400 underline decoration-white/20 underline-offset-4 transition-colors hover:text-white"
+                  className="uppercase tracking-[0.18em] text-steel-400 underline decoration-white/20 underline-offset-4 transition-colors hover:text-white"
                 >
                   Reset
                 </button>
@@ -82,8 +84,9 @@ export function Calculator() {
 
           {/* Results */}
           <Reveal delay={0.1} className="relative bg-ink-950 p-6 sm:p-10">
+            <div aria-hidden className="bg-blueprint pointer-events-none absolute inset-0 opacity-40" />
             <div className="relative" aria-live="polite" aria-atomic="false">
-              <p className="text-[0.85rem] text-steel-500">Estimated annual upside</p>
+              <p className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-steel-500">Estimated annual upside</p>
               <p className="mt-5 flex flex-wrap items-baseline gap-x-4 text-white">
                 <CountUp
                   value={r.conservative.total}
@@ -124,7 +127,7 @@ export function Calculator() {
                 />
               </dl>
 
-              <div className="mt-6 grid grid-cols-2 gap-4 text-[0.85rem] text-steel-500">
+              <div className="mt-6 grid grid-cols-2 gap-4 font-mono text-[0.68rem] uppercase tracking-[0.12em] text-steel-500">
                 <p>
                   SaaS per employee
                   <span className="mt-1 block font-sans text-[0.9rem] normal-case tracking-normal text-steel-300">
@@ -152,7 +155,7 @@ export function Calculator() {
             </div>
 
             <details className="group relative mt-8 border-t border-white/[0.08] pt-5 text-[0.85rem] text-steel-400">
-              <summary className="flex cursor-pointer list-none items-center justify-between text-[0.85rem] text-steel-400 hover:text-white [&::-webkit-details-marker]:hidden">
+              <summary className="flex cursor-pointer list-none items-center justify-between font-mono text-[0.68rem] uppercase tracking-[0.16em] text-steel-400 hover:text-white [&::-webkit-details-marker]:hidden">
                 Assumptions and method
                 <span aria-hidden className="transition-transform duration-300 group-open:rotate-45">
                   +
@@ -189,7 +192,7 @@ export function Calculator() {
 function ResultCell({ label, value, sub }: { label: string; value: string; sub: string }) {
   return (
     <div className="bg-ink-950 p-5">
-      <dt className="text-[0.85rem] text-steel-500">{label}</dt>
+      <dt className="font-mono text-[0.64rem] uppercase tracking-[0.16em] text-steel-500">{label}</dt>
       <dd className="mt-3">
         <span className="block text-[1.45rem] font-medium tracking-[-0.03em] text-white tabular-nums">{value}</span>
         <span className="mt-1 block text-[0.8rem] leading-snug text-steel-400">{sub}</span>

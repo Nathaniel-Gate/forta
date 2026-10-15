@@ -14,14 +14,23 @@ import type { SourceId } from "./sources";
 export type Stat = { value: string; label: string; source: SourceId };
 
 export const hero = {
-  headline: "Make your company AI-native.",
+  eyebrow: "AI-native transformation, London",
+  headline: ["Make your", "company", "AI-native."],
   subhead:
     "We teach your team to build the software they need with AI, so you stop paying for tools that don't fit and start owning ones that do.",
   secondaryCta: { label: "Or book a call with us", intent: "call" as const },
-  byline: "Nathaniel Gate and Oree Golan, London",
+  byline: "Nathaniel Gate and Oree Golan",
+  bylineDetail: "Oree built AI agents at HubSpot. Nathaniel works on AI at Moody's.",
+  proof: [
+    { value: "3 hours", label: "to get your stack back, rebuilt for your company" },
+    { value: "16 weeks", label: "to a team that builds its own software with AI" },
+    { value: "100%", label: "of the code, data and skills stay yours" },
+  ],
 };
 
 export const whyNow = {
+  index: "01",
+  eyebrow: "Why now",
   title: "Why bother now?",
   stats: [
     {
@@ -39,6 +48,8 @@ export const whyNow = {
 };
 
 export const whatWeDo = {
+  index: "02",
+  eyebrow: "What changes",
   title: "What actually changes",
   items: [
     {
@@ -72,39 +83,41 @@ export const whatWeDo = {
 };
 
 export const method = {
+  index: "03",
+  eyebrow: "How it works",
   title: "How a project runs",
   lede: "Each stage hands a bit more of the work to your people. By the end they're doing nearly all of it.",
   phases: [
     {
-      n: "1",
+      n: "01",
       name: "Diagnose",
       duration: "3 weeks",
       body: "We look at what you pay for and where people lose time, then agree what's worth building.",
       forta: 85,
     },
     {
-      n: "2",
+      n: "02",
       name: "Design",
       duration: "2 weeks",
       body: "We plan the first system with the people who'll use it every day.",
       forta: 65,
     },
     {
-      n: "3",
+      n: "03",
       name: "Build",
       duration: "6 weeks",
       body: "Your people build real systems alongside us, using AI, from the first week.",
       forta: 45,
     },
     {
-      n: "4",
+      n: "04",
       name: "Enable",
       duration: "4 weeks",
       body: "Your team takes the lead on the next system while we coach.",
       forta: 25,
     },
     {
-      n: "5",
+      n: "05",
       name: "Hand over",
       duration: "1 week",
       body: "Your team ships a change without our help, and that's when we step back.",
@@ -115,6 +128,8 @@ export const method = {
 };
 
 export const team = {
+  index: "05",
+  eyebrow: "Who we are",
   title: "Who you'd be working with",
   people: [
     {
@@ -145,6 +160,8 @@ export const team = {
 };
 
 export const engagement = {
+  index: "06",
+  eyebrow: "Pricing",
   title: "What it costs",
   stages: [
     {
@@ -167,7 +184,9 @@ export const engagement = {
 };
 
 export const closing = {
-  title: "Rather talk it through?",
+  index: "08",
+  eyebrow: "Talk to us",
+  title: ["Rather talk", "it through?"],
   body: "Tell us a bit about your company and one of us will get back to you within two working days.",
   intents: [
     { id: "call", label: "Book a call" },

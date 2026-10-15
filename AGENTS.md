@@ -9,12 +9,13 @@ teams learn to build with AI, and rented software is replaced by systems they ow
 Written for a 10-second visit. The lead offer is the free stack rebuild (form in
 the hero and at /stack, the link used in outreach; requests go to /api/stack).
 
-**No AI tells.** Do not add: numbered mono eyebrow labels, uppercase tracked
-labels, pulsing "live" dots, serif-italic accent words, grid/grain/glow
-backgrounds, gradient hairlines, glowing buttons, fade-in-on-scroll for every
-block, smooth-scroll libraries, card grids for everything, or lists of exactly
-three. Copy: plain sentences, specifics, no fragment chains, no "not X, it's Y",
-and never imply a track record Forta doesn't have yet.
+**Keep the craft.** The owner's direction (15 Oct 2026): a plain, static page reads
+as MORE machine-made, not less. Keep the blueprint grid, registration marks,
+numbered drawing-sheet section labels, the plotted hero/system drawing, the serif
+italic accent, reveals, Lenis smooth scroll and the glow on primary buttons.
+What to avoid is generic filler: purple gradients, stock illustrations, pulsing
+"live" dots (removed at the owner's request), and copy tells (fragment chains,
+"not X, it's Y", buzzwords, implying a track record Forta doesn't have yet).
 Next.js 16 (App Router, Cache Components on), React 19, TypeScript, Tailwind v4.
 Hosted on GitHub as a shareable repo. Do not deploy anywhere without the owner asking.
 
@@ -23,7 +24,7 @@ Hosted on GitHub as a shareable repo. Do not deploy anywhere without the owner a
 ```
 src/
   app/
-    layout.tsx           fonts, metadata
+    layout.tsx           fonts, metadata, <SmoothScroll>
     page.tsx             section order (the narrative). Section ids = nav anchors
     globals.css          ALL design tokens (@theme) + shared surface classes
     api/enquiry/route.ts contact form handler (shared Zod schema)

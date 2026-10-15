@@ -2,6 +2,16 @@
 
 Status as of 15 Oct 2026: **complete.** Runs locally; source published to GitHub (Nathaniel-Gate/forta). Not deployed to any host.
 
+## Revision 4 (15 Oct 2026): craft restored
+
+Owner feedback on revision 3: stripping the visuals made it generic and MORE AI-looking.
+Restored the blueprint grid, grain and key light, registration marks, numbered section labels,
+the plotted system drawing (now in "What actually changes", drawn on scroll), headline rise with
+the serif accent, reveals, Lenis and button glow. Kept: the plain copy, the stack offer (form now
+framed as a drawing sheet in the hero), honesty fixes, and no pulsing dot. Big-number strip is back
+under the hero, led by "3 hours". QA: no console errors or overflow at three widths, 0 axe
+violations, both stack forms pass.
+
 ## Revision 3 (15 Oct 2026): free stack rebuild offer, AI tells removed
 
 - Lead offer: "Get your tech stack rebuilt, free", back within three hours. A 3-field form (tools

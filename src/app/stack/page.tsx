@@ -19,7 +19,11 @@ export const metadata: Metadata = {
 export default function StackPage() {
   const s = stackOffer;
   return (
-    <main className="min-h-screen bg-ink-950 pb-24 text-stone-100">
+    <main className="grain relative isolate min-h-screen overflow-hidden bg-ink-950 pb-24 text-stone-100">
+      <div
+        aria-hidden
+        className="bg-blueprint absolute inset-0 -z-10 [mask-image:radial-gradient(ellipse_80%_70%_at_50%_30%,black_20%,transparent_80%)]"
+      />
       <Container>
         <header className="flex h-[var(--nav-h)] items-center">
           <Link href="/" aria-label="Forta home" className="text-white">
@@ -27,7 +31,8 @@ export default function StackPage() {
           </Link>
         </header>
         <div className="mx-auto mt-10 max-w-2xl sm:mt-16">
-          <h1 className="text-balance text-[clamp(2.4rem,6vw,4rem)] font-medium leading-[1] tracking-[-0.045em] text-white">
+          <p className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-steel-400">Free offer, back in 3 hours</p>
+          <h1 className="mt-5 text-balance text-[clamp(2.4rem,6vw,4rem)] font-medium leading-[1] tracking-[-0.045em] text-white">
             {s.page.title}
           </h1>
           <p className="mt-5 text-[1.15rem] leading-relaxed text-steel-300">{s.page.intro}</p>
@@ -46,7 +51,7 @@ export default function StackPage() {
             </div>
             <p className="text-[0.95rem] text-steel-300">Nathaniel and Oree read every one themselves.</p>
           </div>
-          <div className="mt-10 border border-white/15 bg-ink-900 p-6 sm:p-8">
+          <div className="edge-steel mt-10 bg-ink-900/85 p-6 backdrop-blur sm:p-8">
             <StackForm source="stack-page" />
           </div>
         </div>

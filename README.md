@@ -36,7 +36,8 @@ within three hours. To go live, swap the `store()` call in
 | --- | --- |
 | Next.js 16 App Router, React 19, TypeScript | Static-first page with one API route for the form |
 | Tailwind CSS v4 with `@theme` tokens | One file (`globals.css`) holds the whole design system |
-| Motion (`motion/react`) | The method gauge and calculator count-ups only |
+| Motion (`motion/react`) | Reveals, the plotted system drawing, headline rise, method gauge, count-ups |
+| Lenis | Smooth scrolling; off under reduced motion |
 | React Hook Form + Zod | Form state and validation; the same schema validates on the server |
 | Radix Accordion | Accessible FAQ |
 | Vitest | Calculator maths is tested by hand-worked cases |
@@ -46,7 +47,7 @@ Magic UI and React Three Fiber. Their stock effects (spotlights, beams, 3D
 globes) are exactly the "AI startup" look this brand avoids; every visual here
 is a bespoke SVG in the blueprint idiom. GSAP was unnecessary next to Motion.
 
-Fonts: Hanken Grotesk for everything, IBM Plex Mono for a few figures, via `next/font`.
+Fonts: Hanken Grotesk (text and display), Newsreader italic (accent words), IBM Plex Mono (drawing labels), via `next/font`.
 
 ## Project structure
 
