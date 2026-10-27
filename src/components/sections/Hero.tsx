@@ -8,6 +8,7 @@ import { stackOffer } from "@/content/stack";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { StackForm } from "@/components/stack/StackForm";
+import { useReplayInView } from "@/lib/use-replay-in-view";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -22,10 +23,11 @@ export function Hero() {
   const gridOpacity = useTransform(scrollYProgress, [0, 0.8], [1, reduce ? 1 : 0.3]);
   const gridY = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 120]);
 
+  const shown = useReplayInView(ref);
   const rise = (delay: number) => ({
     initial: { opacity: 0, y: 16 },
-    animate: { opacity: 1, y: 0 },
-    transition: reduce ? { duration: 0 } : { delay, duration: 1, ease },
+    animate: shown ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 },
+    transition: reduce ? { duration: 0 } : shown ? { delay, duration: 1, ease } : { duration: 0.3 },
   });
 
   return (

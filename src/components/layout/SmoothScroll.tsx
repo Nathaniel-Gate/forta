@@ -2,6 +2,7 @@
 
 import { ReactLenis } from "lenis/react";
 import { useReducedMotion } from "motion/react";
+import { IdleTour } from "./IdleTour";
 
 /**
  * Lenis smooth scrolling for the whole page. With reduced motion, smoothing
@@ -20,6 +21,7 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
         anchors: reduce ? { immediate: true } : true,
       }}
     >
+      <IdleTour />
       {children}
     </ReactLenis>
   );

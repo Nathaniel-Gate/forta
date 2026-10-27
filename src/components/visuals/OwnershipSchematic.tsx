@@ -1,6 +1,8 @@
 "use client";
 
 import { motion, useReducedMotion } from "motion/react";
+import { useRef } from "react";
+import { useReplayInView } from "@/lib/use-replay-in-view";
 
 /**
  * Hero drawing: a technical plan of a client's own operating system.
@@ -30,26 +32,28 @@ const ease = [0.65, 0, 0.35, 1] as const;
 
 export function OwnershipSchematic({ className }: { className?: string }) {
   const reduce = useReducedMotion();
+  const svgRef = useRef<SVGSVGElement>(null);
+  const shown = useReplayInView(svgRef, "0px 0px -20% 0px");
 
   // Same initial/animate on server and client; reduced motion only zeroes the timing.
   const draw = (delay: number, duration = 1.1) => ({
     initial: { pathLength: 0, opacity: 0 },
-    whileInView: { pathLength: 1, opacity: 1 },
-    viewport: { once: true, margin: "0px 0px -20% 0px" },
+    animate: shown ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 },
     transition: reduce
       ? { duration: 0 }
-      : { pathLength: { delay, duration, ease }, opacity: { delay, duration: 0.01 } },
+      : shown
+        ? { pathLength: { delay, duration, ease }, opacity: { delay, duration: 0.01 } }
+        : { duration: 0.2 },
   });
 
   const fade = (delay: number) => ({
     initial: { opacity: 0 },
-    whileInView: { opacity: 1 },
-    viewport: { once: true, margin: "0px 0px -20% 0px" },
-    transition: reduce ? { duration: 0 } : { delay, duration: 0.8 },
+    animate: { opacity: shown ? 1 : 0 },
+    transition: reduce ? { duration: 0 } : shown ? { delay, duration: 0.8 } : { duration: 0.2 },
   });
 
   return (
-    <svg viewBox="0 0 520 520" className={className} aria-hidden fill="none">
+    <svg ref={svgRef} viewBox="0 0 520 520" className={className} aria-hidden fill="none">
       <defs>
         <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
           <line x1="0" y1="0" x2="0" y2="6" stroke="rgb(255 255 255 / 0.07)" strokeWidth="1" />

@@ -1,6 +1,7 @@
 "use client";
 
-import { animate, useInView, useReducedMotion } from "motion/react";
+import { animate, useReducedMotion } from "motion/react";
+import { useReplayInView } from "@/lib/use-replay-in-view";
 import { useEffect, useRef } from "react";
 
 /**
@@ -20,13 +21,17 @@ export function CountUp({
   className?: string;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "0px 0px -10% 0px" });
+  const inView = useReplayInView(ref, "0px 0px -10% 0px");
   const reduce = useReducedMotion();
   const from = useRef(0);
 
   useEffect(() => {
     const el = ref.current;
-    if (!el || !inView) return;
+    if (!el) return;
+    if (!inView) {
+      from.current = 0; // replay from zero on the next entry
+      return;
+    }
     if (reduce) {
       el.textContent = format(value);
       from.current = value;
