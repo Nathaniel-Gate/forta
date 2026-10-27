@@ -10,10 +10,10 @@ const plexMono = IBM_Plex_Mono({ variable: "--font-plex-mono", subsets: ["latin"
 export const metadata: Metadata = {
   title: "Algosoup | Make your company AI-native",
   description:
-    "Algosoup teaches your team to build software with AI, so you stop renting tools that don't fit and own ones that do.",
+    "Algosoup trains your team to get far more from AI, redoing manual workflows with them, with embedded engineering pods when a build is too big to do alone.",
   openGraph: {
     title: "Algosoup | Make your company AI-native",
-    description: "Send us your tech stack and get it back rebuilt for your company within three hours, free.",
+    description: "Send us one manual workflow and get it back redone with AI, plus the Claude skills to run it, within three hours, free.",
     type: "website",
     locale: "en_GB",
   },
