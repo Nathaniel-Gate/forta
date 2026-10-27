@@ -36,8 +36,9 @@ export function IdleTour() {
     };
 
     /**
-     * Scroll positions to visit, top to bottom. Each section gets a stop with
-     * its top edge aligned to the top of the screen. A section taller than the
+     * Scroll positions to visit, top to bottom. Each section gets a stop that
+     * puts its content just under the fixed nav, skipping the section's empty
+     * top padding (the opening screen sits at 0). A section taller than the
      * screen gets further stops that move down it, the last one lining its
      * bottom edge up with the bottom of the screen, so all of it is seen at any
      * aspect ratio.
@@ -45,15 +46,18 @@ export function IdleTour() {
     const stops = () => {
       const vh = window.innerHeight;
       const max = document.documentElement.scrollHeight - vh;
+      const navH = document.querySelector("header")?.getBoundingClientRect().height ?? 68;
       const out: number[] = [];
       for (const id of idleTour.sectionIds) {
         const el = document.getElementById(id);
         if (!el) continue;
         const r = el.getBoundingClientRect();
-        const top = window.scrollY + r.top;
-        const bottomAligned = top + r.height - vh;
+        const pad = id === "top" ? 0 : parseFloat(getComputedStyle(el).paddingTop) || 0;
+        const top = Math.max(0, window.scrollY + r.top + pad - navH - idleTour.navGapPx);
+        const end = window.scrollY + r.top + r.height;
+        const bottomAligned = end - vh;
         const ys = [top];
-        while (ys[ys.length - 1] + vh < top + r.height - vh * 0.05) {
+        while (ys[ys.length - 1] + vh < end - vh * 0.05) {
           ys.push(Math.min(ys[ys.length - 1] + vh * idleTour.sliceStep, bottomAligned));
         }
         for (const y of ys) out.push(Math.min(max, Math.max(0, Math.round(y))));

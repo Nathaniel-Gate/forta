@@ -8,6 +8,8 @@ export const idleTour = {
   dwellMs: [4_000, 6_000] as const,
   /** A section taller than the screen is toured in further stops, each moving down by this share of the screen height. */
   sliceStep: 0.85,
+  /** Breathing room between the nav and a section's first content line at each stop. */
+  navGapPx: 24,
   /** Sections to visit, top to bottom, then loop back to the first. Missing ids are skipped. */
   sectionIds: ["top", "why", "what", "method", "team", "engagement", "faq", "contact"],
 };
