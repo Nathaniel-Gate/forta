@@ -1,4 +1,4 @@
-# Forta
+# Algosoup (prototype re-skin of Forta)
 
 Marketing site for **Forta**, which makes companies AI-native: it trains client
 teams to build with AI, replaces rented software with systems they own, and cuts

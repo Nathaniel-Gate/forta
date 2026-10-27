@@ -8,7 +8,7 @@ import { Logo } from "@/components/ui/Logo";
 import { StackForm } from "@/components/stack/StackForm";
 
 export const metadata: Metadata = {
-  title: "Free tech stack rebuild | Forta",
+  title: "Free tech stack rebuild | Algosoup",
   description: stackOffer.page.intro,
 };
 
@@ -26,7 +26,7 @@ export default function StackPage() {
       />
       <Container>
         <header className="flex h-[var(--nav-h)] items-center">
-          <Link href="/" aria-label="Forta home" className="text-white">
+          <Link href="/" aria-label="Algosoup home" className="text-white">
             <Logo />
           </Link>
         </header>

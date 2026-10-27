@@ -218,7 +218,7 @@ export function Contact() {
                       aria-describedby={errors.consent ? "consent-error" : undefined}
                       className="mt-0.5 h-4 w-4 shrink-0 accent-[var(--color-signal)]"
                     />
-                    <span>Forta may contact me about this enquiry. We do not add you to marketing lists.</span>
+                    <span>Algosoup may contact me about this enquiry. We do not add you to marketing lists.</span>
                   </label>
                   {errors.consent && (
                     <p id="consent-error" className="mt-2 text-[0.8rem] text-error">

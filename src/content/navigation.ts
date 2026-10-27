@@ -1,7 +1,7 @@
 /** Navigation and footer content. Anchor hrefs must match section ids in src/app/page.tsx. */
 
 export const brand = {
-  name: "Forta",
+  name: "Algosoup",
   descriptor: "Helping companies become AI-native",
   location: "London, United Kingdom",
 };
@@ -17,7 +17,7 @@ export const navLinks = [
 export const navCta = { label: "Free stack rebuild", href: "/#stack" };
 
 export const footer = {
-  statement: "Forta makes companies AI-native.",
+  statement: "Algosoup makes companies AI-native.",
   columns: [
     {
       title: "Explore",

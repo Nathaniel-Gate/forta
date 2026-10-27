@@ -1,5 +1,5 @@
 /**
- * The free stack rebuild: Forta's lead offer. A prospect lists the software
+ * The free stack rebuild: Algosoup's lead offer. A prospect lists the software
  * they pay for; within three hours a director sends the stack back,
  * redesigned around their company. Copy for the form lives here.
  */

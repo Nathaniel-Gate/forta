@@ -124,7 +124,7 @@ export const method = {
       forta: 5,
     },
   ],
-  gaugeLabels: { forta: "Forta", client: "Your team" },
+  gaugeLabels: { forta: "Algosoup", client: "Your team" },
 };
 
 export const team = {
