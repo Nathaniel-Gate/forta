@@ -9,12 +9,12 @@ import { motion, useReducedMotion } from "motion/react";
  */
 
 const modules = [
-  { id: "intake", x: 24, y: 64, w: 150, h: 84, label: "INTAKE", sub: "requests · cases" },
-  { id: "approvals", x: 194, y: 64, w: 150, h: 84, label: "APPROVALS", sub: "rules · audit" },
-  { id: "portal", x: 364, y: 64, w: 132, h: 84, label: "CLIENT PORTAL", sub: "status · docs" },
-  { id: "core", x: 24, y: 196, w: 472, h: 116, label: "OPERATIONS CORE", sub: "built and maintained in-house" },
-  { id: "reporting", x: 24, y: 360, w: 222, h: 84, label: "REPORTING", sub: "live MI · board pack" },
-  { id: "data", x: 266, y: 360, w: 230, h: 84, label: "DATA LAYER", sub: "your systems of record" },
+  { id: "intake", x: 24, y: 64, w: 150, h: 84, label: "TRIGGER", sub: "email · form · schedule" },
+  { id: "approvals", x: 194, y: 64, w: 150, h: 84, label: "CLAUDE SKILL", sub: "steps · checks" },
+  { id: "portal", x: 364, y: 64, w: 132, h: 84, label: "REVIEW", sub: "human sign-off" },
+  { id: "core", x: 24, y: 196, w: 472, h: 116, label: "THE WORKFLOW", sub: "run by your team, powered by AI" },
+  { id: "reporting", x: 24, y: 360, w: 222, h: 84, label: "OUTPUT", sub: "report · draft · update" },
+  { id: "data", x: 266, y: 360, w: 230, h: 84, label: "YOUR TOOLS", sub: "the systems you already use" },
 ];
 
 const connectors = [
@@ -112,7 +112,7 @@ export function OwnershipSchematic({ className }: { className?: string }) {
           fill="rgb(8 9 10 / 0.75)"
         />
       ))}
-      {["AI AGENTS", "WORKFLOW", "RECORDS"].map((t, k) => (
+      {["CLAUDE SKILLS", "WORKFLOW", "REVIEW"].map((t, k) => (
         <motion.text key={t} {...fade(1.6 + k * 0.08)} x={56 + k * 152} y={276} className="fill-steel-300 font-mono" fontSize="8" letterSpacing="1.2">
           {t}
         </motion.text>
@@ -145,7 +145,7 @@ export function OwnershipSchematic({ className }: { className?: string }) {
       <motion.g {...fade(2.2)} className="font-mono" fontSize="7.5" letterSpacing="1.2">
         <line x1="24" y1="496" x2="496" y2="496" stroke="rgb(255 255 255 / 0.18)" strokeWidth="0.75" />
         <text x="24" y="512" className="fill-steel-500">
-          DWG 01 · OPERATING SYSTEM
+          DWG 01 · ONE WORKFLOW
         </text>
         <text x="496" y="512" textAnchor="end" className="fill-steel-500">
           REV C · HANDED OVER

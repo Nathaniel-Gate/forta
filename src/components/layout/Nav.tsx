@@ -55,7 +55,7 @@ export function Nav() {
           aria-label="Primary"
           className="mx-auto flex h-[var(--nav-h)] max-w-[86rem] items-center justify-between px-[var(--gutter)]"
         >
-          <a href="#top" aria-label="Forta, back to top" className="text-white" onClick={() => setOpen(false)}>
+          <a href="#top" aria-label="Algosoup, back to top" className="text-white" onClick={() => setOpen(false)}>
             <Logo />
           </a>
 

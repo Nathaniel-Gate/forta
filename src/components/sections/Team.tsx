@@ -19,7 +19,7 @@ export function Team() {
                 <div className="relative aspect-square w-40 overflow-hidden bg-ink-900/10 sm:w-full">
                   <Image
                     src={p.photo}
-                    alt={`${p.name}, ${p.role} of Forta`}
+                    alt={`${p.name}, ${p.role} of Algosoup`}
                     fill
                     sizes="(min-width: 640px) 176px, 160px"
                     className="object-cover grayscale transition-[filter] duration-700 group-hover:grayscale-0"

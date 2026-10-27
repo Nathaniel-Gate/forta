@@ -31,7 +31,7 @@ export function Engagement() {
         <p className="mt-6 max-w-xl text-[1rem] text-steel-400">{e.note}</p>
         <div className="mt-10 flex flex-col gap-3 xs:flex-row">
           <ButtonLink href="#stack" arrow>
-            Get your free stack rebuild
+            Get your free workflow rebuild
           </ButtonLink>
           <ButtonLink intent="call" variant="ghost" className="text-white">
             Book a call

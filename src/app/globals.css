@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* ==========================================================================
-   Forta design tokens
+   Algosoup design tokens (prototype re-skin of Forta)
    Every colour, font and motion value lives here. Components reference the
    Tailwind utilities generated from @theme (e.g. bg-ink-900, text-steel-400)
    or the raw CSS variables (var(--color-signal)).
@@ -9,33 +9,33 @@
 
 @theme {
   /* Greyscale: ink (darks), steel (mid greys), stone/paper (lights) */
-  --color-ink-950: #08090a;
-  --color-ink-900: #0e0f11;
-  --color-ink-850: #131417;
-  --color-ink-800: #1a1b1f;
-  --color-ink-700: #26272c;
-  --color-ink-600: #34363c;
+  --color-ink-950: #0a0a0a;
+  --color-ink-900: #0f0f0f;
+  --color-ink-850: #161616;
+  --color-ink-800: #1e1e1e;
+  --color-ink-700: #2a2a2a;
+  --color-ink-600: #3a3a3a;
   /* steel-500 is the lowest text tone allowed: >= 4.5:1 on every ink surface */
   --color-steel-500: #878a92;
   --color-steel-400: #a0a3aa;
   --color-steel-300: #bfc1c6;
   --color-steel-200: #cfd0d3;
   --color-stone-200: #d9d7d1;
-  --color-stone-100: #e8e6e0;
-  --color-paper: #f2f0eb;
+  --color-stone-100: #edebe4;
+  --color-paper: #f7f6f2;
   --color-white: #fbfbfa;
 
   /* The single accent. Use sparingly: live states, one data line, focus. */
-  --color-signal: #5b8cff;
-  --color-signal-strong: #3d6ef0;
-  --color-signal-dim: rgb(91 140 255 / 0.14);
+  --color-signal: #ff4d1f;
+  --color-signal-strong: #e0390e;
+  --color-signal-dim: rgb(255 77 31 / 0.14);
 
   /* Form feedback */
   --color-error: #e5867a;
   --color-error-paper: #a8392b;
 
-  --font-sans: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-newsreader), ui-serif, Georgia, serif;
+  --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-plex-sans), ui-serif, Georgia, serif;
   --font-mono: var(--font-plex-mono), ui-monospace, monospace;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);

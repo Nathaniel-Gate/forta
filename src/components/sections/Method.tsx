@@ -163,7 +163,7 @@ function OwnershipGauge({ phase, index }: { phase: Phase; index: number }) {
               className="h-10"
               initial={false}
               animate={{
-                backgroundColor: filled ? "rgb(91 140 255 / 0.9)" : "rgb(255 255 255 / 0.06)",
+                backgroundColor: filled ? "rgb(255 77 31 / 0.9)" : "rgb(255 255 255 / 0.06)",
               }}
               transition={{ duration: reduce ? 0 : 0.4, delay: reduce ? 0 : (9 - i) * 0.025 }}
             />

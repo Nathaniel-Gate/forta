@@ -8,24 +8,28 @@ export const faq = {
   cta: "Book a call",
   items: [
     {
-      q: "What's the catch with the free stack rebuild?",
+      q: "What's the catch with the free workflow rebuild?",
       a: "There isn't one. It's the quickest way to show you how we think. If it's useful you'll probably want to talk, and if not, you've lost five minutes.",
     },
     {
       q: "What does AI-native actually mean?",
-      a: "Your people use AI to build and improve the tools they work with, instead of waiting on vendors or agencies. Work gets faster and cheaper, and keeps improving.",
+      a: "Everyone in the company uses AI well, in their own work, every day. Jobs get done faster and people spend their time on the parts that need judgement.",
+    },
+    {
+      q: "What are Claude skills?",
+      a: "Reusable instruction packs that teach Claude how your team does a particular job, so anyone can run it the same way each time. We write them with you and your team keeps them.",
     },
     {
       q: "Is this an agency or a training course?",
-      a: "Somewhere in between. We build real systems with your team, so they learn by doing the work, and you keep both the software and the skill.",
+      a: "Training first. We teach your people by redoing real workflows with them. If a workflow is too big for the team to build, an Algosoup pod can build it while your people learn alongside.",
     },
     {
       q: "Do our people need to code?",
-      a: "No. Analysts, ops leads and power users usually make the best builders, and we choose them with you.",
+      a: "No. Most of the gains come from people who know the work and learn to direct AI well. We choose the first group with you.",
     },
     {
       q: "How fast will we see value?",
-      a: "We aim to find licence savings within the first few weeks and to have your first system live within three months.",
+      a: "The free rebuild shows you a reworked workflow in three hours. In a programme we aim to have the first workflows running within a few weeks.",
     },
     {
       q: "What about security and our IT team?",
@@ -33,7 +37,7 @@ export const faq = {
     },
     {
       q: "What happens when you leave?",
-      a: "Your team owns the code, the data and the roadmap, and has already shipped a change without us. Support after that is optional.",
+      a: "Your team owns the skills, the workflows and the roadmap, and has already changed one without us. Support after that is optional.",
     },
   ],
 };

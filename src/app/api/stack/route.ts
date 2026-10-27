@@ -4,7 +4,7 @@ import { randomBytes } from "node:crypto";
 import { stackSchema } from "@/lib/stack-schema";
 
 /**
- * Free stack rebuild requests. Appends to .data/stack-requests.ndjson (gitignored).
+ * Free workflow rebuild requests. Appends to .data/workflow-requests.ndjson (gitignored).
  * Before going live, also notify the directors here (email or Slack), because the
  * offer promises a reply within three hours.
  */
@@ -27,7 +27,7 @@ export async function POST(request: Request) {
     );
   }
 
-  const reference = `STK-${randomBytes(3).toString("hex").toUpperCase()}`;
+  const reference = `WFL-${randomBytes(3).toString("hex").toUpperCase()}`;
   if (parsed.data.website) return Response.json({ ok: true, reference });
 
   const { website: _honeypot, ...req } = parsed.data;
@@ -35,7 +35,7 @@ export async function POST(request: Request) {
   try {
     await mkdir(DATA_DIR, { recursive: true });
     await appendFile(
-      path.join(DATA_DIR, "stack-requests.ndjson"),
+      path.join(DATA_DIR, "workflow-requests.ndjson"),
       JSON.stringify({ reference, receivedAt: new Date().toISOString(), ...req }) + "\n",
       "utf8",
     );

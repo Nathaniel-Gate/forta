@@ -17,14 +17,14 @@ export const hero = {
   eyebrow: "AI-native transformation, London",
   headline: ["Make your", "company", "AI-native."],
   subhead:
-    "We teach your team to build the software they need with AI, so you stop paying for tools that don't fit and start owning ones that do.",
+    "We train your people to use AI properly, so every employee does better work in ways they can't picture yet. When a job is too big for the team, an Algosoup pod can build it alongside them.",
   secondaryCta: { label: "Or book a call with us", intent: "call" as const },
   byline: "Nathaniel Gate and Oree Golan",
   bylineDetail: "Oree built AI agents at HubSpot. Nathaniel works on AI at Moody's.",
   proof: [
-    { value: "3 hours", label: "to get your stack back, rebuilt for your company" },
-    { value: "16 weeks", label: "to a team that builds its own software with AI" },
-    { value: "100%", label: "of the code, data and skills stay yours" },
+    { value: "3 hours", label: "to get one of your manual workflows back, redone with AI" },
+    { value: "16 weeks", label: "to a team that uses AI well across its everyday work" },
+    { value: "100%", label: "of the skills and workflows stay yours" },
   ],
 };
 
@@ -35,14 +35,13 @@ export const whyNow = {
   stats: [
     {
       value: "55%",
-      label:
-        "Developers finished a coding task 55% faster with an AI assistant in a controlled trial. Building your own tools has never been this cheap.",
+      label: "Developers finished a coding task 55% faster with an AI assistant in a controlled trial. The same tools are now open to every role in your company.",
       source: "peng-copilot-2023",
     },
     {
-      value: "+14%",
-      label: "Software spending rose 14% in 2025, and Gartner puts much of that down to vendors raising prices.",
-      source: "gartner-it-spend-2025",
+      value: "71%",
+      label: "Digital projects meet their targets 71% of the time when business leaders co-own delivery, against 48% overall. The people doing the work matter more than the tool.",
+      source: "gartner-digital-2024",
     },
   ] satisfies Stat[],
 };
@@ -53,78 +52,78 @@ export const whatWeDo = {
   title: "What actually changes",
   items: [
     {
-      title: "Your team learns to build",
-      body: "We pick a handful of people who know your processes, usually ops leads or analysts, and teach them to build and fix internal software with AI. They keep that skill after we've gone.",
+      title: "Everyone gets more from AI",
+      body: "Most people use AI like a search box. We show each team what it can do with their own work, using their own documents and tools, so the gains show up in the week.",
     },
     {
-      title: "You own your systems",
-      body: "The tools that never quite fit get replaced with ones built around how you work. The code and data live in your accounts from day one.",
+      title: "Manual workflows get redone",
+      body: "We take the jobs people repeat by hand and rebuild them around AI, packaged as Claude skills that anyone on the team can run.",
     },
     {
-      title: "Your bills come down",
-      body: "Fewer licences, less copying data between systems, and no agency invoice every time you want a field moved.",
+      title: "Performance lifts across the team",
+      body: "Less time on drafting, chasing, copying and reporting, and more on the work that needs judgement. People pick up methods they didn't know to ask for.",
     },
     {
-      title: "Changes take days",
-      body: "When the business changes, your own people update the software that week instead of waiting on a vendor's roadmap.",
+      title: "More hands when you need them",
+      body: "When a workflow is too big for your team to build alone, an Algosoup pod of engineers embeds with you, builds it, and trains your people to run it.",
     },
   ],
-  buildsLabel: "Things we can help your team build",
+  buildsLabel: "Workflows teams stop doing by hand",
   builds: [
-    "Approval flows",
-    "Ops dashboards",
-    "Client portals",
-    "A lighter CRM",
-    "Board reporting",
-    "Case management",
-    "AI agents for admin",
-    "Internal tools",
+    "Weekly reporting",
+    "Client onboarding",
+    "Contract review",
+    "Meeting follow-ups",
+    "Invoice chasing",
+    "Candidate screening",
+    "Research briefs",
+    "Data clean-up",
   ],
 };
 
 export const method = {
   index: "03",
   eyebrow: "How it works",
-  title: "How a project runs",
+  title: "How a programme runs",
   lede: "Each stage hands a bit more of the work to your people. By the end they're doing nearly all of it.",
   phases: [
     {
       n: "01",
       name: "Diagnose",
       duration: "3 weeks",
-      body: "We look at what you pay for and where people lose time, then agree what's worth building.",
+      body: "We look at where people lose time and which workflows are worth redoing first.",
       forta: 85,
     },
     {
       n: "02",
       name: "Design",
       duration: "2 weeks",
-      body: "We plan the first system with the people who'll use it every day.",
+      body: "We redesign the first workflow with the people who run it every day.",
       forta: 65,
     },
     {
       n: "03",
       name: "Build",
       duration: "6 weeks",
-      body: "Your people build real systems alongside us, using AI, from the first week.",
+      body: "Your people build real workflows alongside us from the first week. Anything bigger goes to an Algosoup pod.",
       forta: 45,
     },
     {
       n: "04",
       name: "Enable",
       duration: "4 weeks",
-      body: "Your team takes the lead on the next system while we coach.",
+      body: "Your team takes the lead on the next workflow while we coach, and the training widens to more people.",
       forta: 25,
     },
     {
       n: "05",
       name: "Hand over",
       duration: "1 week",
-      body: "Your team ships a change without our help, and that's when we step back.",
+      body: "Your team changes a workflow without our help, and that's when we step back.",
       forta: 5,
     },
   ],
-  gaugeLabels: { forta: "Forta", client: "Your team" },
+  gaugeLabels: { forta: "Algosoup", client: "Your team" },
 };
 
 export const team = {
@@ -165,22 +164,27 @@ export const engagement = {
   title: "What it costs",
   stages: [
     {
-      name: "Free stack rebuild",
+      name: "Free workflow rebuild",
       shape: "Free, back in 3 hours",
-      body: "Send us your tools and we send back a version built around your company.",
+      body: "Tell us one manual workflow. We send back an AI version of it, plus the Claude skills to run it.",
     },
     {
-      name: "Operational review",
+      name: "Workflow review",
       shape: "Fixed fee, 3 weeks",
-      body: "We map your costs and the time your team loses, and write up the business case. You keep it whether or not you go ahead.",
+      body: "We map the workflows costing your team the most time and write up the business case. You keep it whether or not you go ahead.",
     },
     {
-      name: "Transformation",
+      name: "Team training programme",
       shape: "From £75k, about 4 months",
-      body: "We build the first systems with your team and train them as we go, priced in fixed phases.",
+      body: "We train your people and redo workflows with them across teams, priced in fixed phases.",
+    },
+    {
+      name: "Algosoup pod",
+      shape: "Scoped per project",
+      body: "For workflows too big to build in-house, engineers embed with your team, build it, and hand over to the people we've trained.",
     },
   ],
-  note: "After that, quarterly support is there if you want it. It is designed to shrink as your team gets more confident.",
+  note: "After that, quarterly support is there if you want it, and a pod can be brought in whenever a build outgrows the team.",
 };
 
 export const closing = {
@@ -193,7 +197,7 @@ export const closing = {
     { id: "review", label: "Ask about a review" },
     { id: "engagement", label: "Discuss a project" },
   ] as const,
-  direct: { label: "Or email", email: "hello@forta.example" },
+  direct: { label: "Or email", email: "hello@algosoup.example" },
   responseNote: "Nathaniel or Oree will reply within two working days.",
 };
 

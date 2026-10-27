@@ -62,7 +62,7 @@ export function Footer() {
         </section>
 
         <div className="mt-20 flex flex-col gap-3 border-t border-white/[0.08] py-8 font-mono text-[0.68rem] uppercase tracking-[0.14em] text-steel-500 sm:flex-row sm:justify-between">
-          <span>© 2026 Forta</span>
+          <span>© 2026 Algosoup</span>
           <span>{footer.legal}</span>
         </div>
       </Container>

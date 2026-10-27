@@ -10,7 +10,7 @@ import { cn } from "@/lib/cn";
 type Status = { state: "idle" } | { state: "sending" } | { state: "sent" } | { state: "error"; message: string };
 
 /**
- * The free stack rebuild form. Used in the hero and on /stack (the link we
+ * The free workflow rebuild form. Used in the hero and on /stack (the link we
  * send in outreach). `source` records where the request came from.
  */
 export function StackForm({ source, className }: { source: string; className?: string }) {
@@ -28,7 +28,7 @@ export function StackForm({ source, className }: { source: string; className?: s
     formState: { errors, isSubmitted },
   } = useForm<StackRequestInput, unknown, StackRequest>({
     resolver: zodResolver(stackSchema),
-    defaultValues: { tools: [], company: "", email: "", pain: "", source, website: "" },
+    defaultValues: { workflow: "", tools: [], company: "", email: "", pain: "", source, website: "" },
   });
   const tools = useWatch({ control, name: "tools" }) ?? [];
 
@@ -82,8 +82,32 @@ export function StackForm({ source, className }: { source: string; className?: s
 
   return (
     <form noValidate onSubmit={handleSubmit(onSubmit)} className={className} aria-label={s.title}>
-      {/* Tools */}
+      {/* Workflow */}
       <div>
+        <label htmlFor={`${id}-workflow`} className="text-[0.85rem] text-steel-300">
+          {s.workflowLabel}
+        </label>
+        <textarea
+          id={`${id}-workflow`}
+          rows={3}
+          placeholder={s.workflowPlaceholder}
+          aria-describedby={`${id}-workflow-help${errors.workflow ? ` ${id}-workflow-error` : ""}`}
+          aria-invalid={errors.workflow ? true : undefined}
+          className={cn(inputBase, "mt-1 resize-none", errors.workflow ? "border-error" : "border-white/25 focus:border-white")}
+          {...register("workflow")}
+        />
+        <p id={`${id}-workflow-help`} className="sr-only">
+          {s.workflowHelp}
+        </p>
+        {errors.workflow && (
+          <p id={`${id}-workflow-error`} className="mt-2 text-[0.8rem] text-error">
+            {errors.workflow.message}
+          </p>
+        )}
+      </div>
+
+      {/* Tools (optional) */}
+      <div className="mt-6">
         <label htmlFor={`${id}-tool`} className="text-[0.85rem] text-steel-300">
           {s.toolsLabel}
         </label>
@@ -121,7 +145,7 @@ export function StackForm({ source, className }: { source: string; className?: s
             }
           }}
           onBlur={() => addTool(draft)}
-          placeholder="e.g. Salesforce, Monday.com, Xero"
+          placeholder="e.g. Excel, Outlook, Xero"
           aria-describedby={`${id}-tool-help${errors.tools ? ` ${id}-tool-error` : ""}`}
           aria-invalid={errors.tools ? true : undefined}
           className={cn(inputBase, "mt-1", errors.tools ? "border-error" : "border-white/25 focus:border-white")}
@@ -131,7 +155,7 @@ export function StackForm({ source, className }: { source: string; className?: s
         </p>
         {errors.tools && (
           <p id={`${id}-tool-error`} className="mt-2 text-[0.8rem] text-error">
-            {errors.tools.message ?? "Add at least one tool"}
+            {errors.tools.message}
           </p>
         )}
         <div className="mt-3 flex flex-wrap gap-1.5">
@@ -206,7 +230,7 @@ export function StackForm({ source, className }: { source: string; className?: s
       <button
         type="submit"
         disabled={status.state === "sending"}
-        className="group mt-7 flex min-h-13 w-full items-center justify-between bg-white px-6 py-3.5 text-[1rem] font-medium text-ink-950 shadow-[0_0_0_1px_rgb(255_255_255/0.4),0_0_32px_-8px_rgb(255_255_255/0.5)] transition-[background-color,box-shadow] hover:shadow-[0_0_0_1px_rgb(91_140_255/0.6),0_0_36px_-6px_rgb(91_140_255/0.55)] disabled:opacity-70"
+        className="group mt-7 flex min-h-13 w-full items-center justify-between bg-white px-6 py-3.5 text-[1rem] font-medium text-ink-950 shadow-[0_0_0_1px_rgb(255_255_255/0.4),0_0_32px_-8px_rgb(255_255_255/0.5)] transition-[background-color,box-shadow] hover:shadow-[0_0_0_1px_rgb(255_77_31/0.6),0_0_36px_-6px_rgb(255_77_31/0.55)] disabled:opacity-70"
       >
         <span>{status.state === "sending" ? "Sending…" : s.submit}</span>
         <svg aria-hidden viewBox="0 0 16 16" className="h-3.5 w-3.5 transition-transform duration-500 group-hover:translate-x-1">

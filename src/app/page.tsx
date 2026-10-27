@@ -1,6 +1,5 @@
 import { Footer } from "@/components/layout/Footer";
 import { Nav } from "@/components/layout/Nav";
-import { Calculator } from "@/components/sections/Calculator";
 import { Contact } from "@/components/sections/Contact";
 import { Engagement } from "@/components/sections/Engagement";
 import { Faq } from "@/components/sections/Faq";
@@ -24,7 +23,6 @@ export default function Home() {
         <WhyNow />
         <WhatWeDo />
         <Method />
-        <Calculator />
         <Team />
         <Engagement />
         <Faq />
