@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView, useReducedMotion } from "motion/react";
+import { motion, useInView, useMotionValueEvent, useReducedMotion, useScroll } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { method } from "@/content/home";
 import { Container } from "@/components/ui/Container";
@@ -18,15 +18,25 @@ export function Method() {
   const [active, setActive] = useState(0);
   const phase = method.phases[active];
 
+  // Gauge progress follows the scroll position of the whole phase list, not the
+  // active phase: 0% when the list first appears (top at 85% of the viewport
+  // height), 100% once its bottom reaches 60%, so it always completes on screen
+  // whatever the aspect ratio.
+  const gridRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: gridRef, offset: ["start 0.85", "end 0.6"] });
+  const [pct, setPct] = useState(0);
+  const toPct = (v: number) => Math.round(Math.min(1, Math.max(0, v)) * 100);
+  useMotionValueEvent(scrollYProgress, "change", (v) => setPct(toPct(v)));
+
   return (
     <Section id="method" tone="ink" labelledBy="method-heading">
       <Container>
         <SectionHeader id="method-heading" index={method.index} eyebrow={method.eyebrow} title={method.title} lede={method.lede} />
 
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-20">
+        <div ref={gridRef} className="grid gap-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-20">
           <aside className="hidden lg:block">
             <div className="sticky top-[calc(var(--nav-h)+3rem)]">
-              <OwnershipGauge phase={phase} index={active} />
+              <OwnershipGauge phase={phase} index={active} client={pct} />
             </div>
           </aside>
 
@@ -125,9 +135,7 @@ function SplitBar({ forta }: { forta: number }) {
   );
 }
 
-function OwnershipGauge({ phase, index }: { phase: Phase; index: number }) {
-  const reduce = useReducedMotion();
-  const client = 100 - phase.forta;
+function OwnershipGauge({ phase, index, client }: { phase: Phase; index: number; client: number }) {
   return (
     <div className="edge-steel relative bg-ink-850 p-8" aria-hidden>
       <div className="flex items-center justify-between font-mono text-[0.68rem] uppercase tracking-[0.18em] text-steel-500">
@@ -148,25 +156,19 @@ function OwnershipGauge({ phase, index }: { phase: Phase; index: number }) {
         <div className="text-right">
           <p className="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-steel-500">{method.gaugeLabels.forta}</p>
           <p className="mt-2 text-[2rem] font-medium leading-none tracking-[-0.04em] text-steel-400 tabular-nums">
-            {phase.forta}%
+            {100 - client}%
           </p>
         </div>
       </div>
 
-      {/* Ten-cell meter reads like an engineering gauge */}
+      {/* Ten-cell meter reads like an engineering gauge; cells fill from the right as the client takes over */}
       <div className="mt-8 grid grid-cols-10 gap-1">
         {Array.from({ length: 10 }).map((_, i) => {
-          const filled = i >= 10 - Math.floor(client / 10);
+          const fill = Math.min(1, Math.max(0, client / 10 - (9 - i)));
           return (
-            <motion.span
-              key={i}
-              className="h-10"
-              initial={false}
-              animate={{
-                backgroundColor: filled ? "rgb(255 77 31 / 0.9)" : "rgb(255 255 255 / 0.06)",
-              }}
-              transition={{ duration: reduce ? 0 : 0.4, delay: reduce ? 0 : (9 - i) * 0.025 }}
-            />
+            <span key={i} className="flex h-10 bg-white/[0.06]">
+              <span className="ml-auto h-full bg-signal/90" style={{ width: `${fill * 100}%` }} />
+            </span>
           );
         })}
       </div>
