@@ -14,17 +14,17 @@ import type { SourceId } from "./sources";
 export type Stat = { value: string; label: string; source: SourceId };
 
 export const hero = {
-  eyebrow: "AI training and enablement, London",
-  headline: ["Everyone", "builds with", "AI."],
+  eyebrow: "AI-native transformation, London",
+  headline: ["Make your", "company", "AI-native."],
   subhead:
-    "A hands-on workshop, in person. Each person builds a working tool for their own job, connects it to their day, and leaves knowing how to use it tomorrow. No slide decks. When you want it across more teams, Algosoup's engineers can build and look after it.",
+    "We train your people to use AI properly, so every employee does better work in ways they can't picture yet. When a job is too big for the team, an Algosoup pod can build it alongside them.",
   secondaryCta: { label: "Or book a call with us", intent: "call" as const },
   byline: "Nathaniel Gate and Oree Golan",
   bylineDetail: "Oree built AI agents at HubSpot. Nathaniel works on AI at Moody's.",
   proof: [
-    { value: "3 hours", label: "for a first session, in person, with 6 to 8 people and 2 facilitators" },
-    { value: "1 tool each", label: "built by every person for their own work, not a demo" },
-    { value: "1 week", label: "later we check who is using their tool and what got in the way" },
+    { value: "3 hours", label: "to get one of your manual workflows back, redone with AI" },
+    { value: "1 tool each", label: "built by every person in the room, for their own work" },
+    { value: "100%", label: "of the skills and workflows stay yours" },
   ],
 };
 
@@ -34,52 +34,50 @@ export const whyNow = {
   title: "Why bother now?",
   stats: [
     {
-      value: "11%",
-      label:
-        "of UK employers had staff trained on AI in the previous 12 months, in a 2024 survey of 801 employers. Most people are left to work it out alone.",
-      source: "dsit-ipsos-2026",
+      value: "55%",
+      label: "Developers finished a coding task 55% faster with an AI assistant in a controlled trial. The same tools are now open to every role in your company.",
+      source: "peng-copilot-2023",
     },
     {
-      value: "95%",
-      label:
-        "of company generative AI pilots showed little or no measurable return in one MIT study, which put it down to a learning gap rather than the models.",
-      source: "mit-nanda-2025",
+      value: "71%",
+      label: "Digital projects meet their targets 71% of the time when business leaders co-own delivery, against 48% overall. The people doing the work matter more than the tool.",
+      source: "gartner-digital-2024",
     },
   ] satisfies Stat[],
 };
 
 export const whatWeDo = {
   index: "02",
-  eyebrow: "What you get",
-  title: "What actually happens",
+  eyebrow: "What changes",
+  title: "What actually changes",
   items: [
     {
-      title: "You watch it built",
-      body: "We open with a messy folder of real-looking emails and ask an AI agent to build a follow-up tool in front of the room. People see what is possible before anyone is asked to try.",
+      title: "Everyone gets more from AI",
+      body: "Most people use AI like a search box. We show each team what it can do with their own work, using their own documents and tools, so the gains show up in the week.",
     },
     {
-      title: "Everyone builds their own",
-      body: "Each person tells the agent what they do on a normal day. It suggests a few tasks, they pick one, and they build a working tool for it, with a facilitator beside them.",
+      title: "Manual workflows get redone",
+      body: "We take the jobs people repeat by hand and rebuild them around AI, packaged as Claude skills that anyone on the team can run.",
     },
     {
-      title: "It becomes part of their day",
-      body: "We decide what starts each tool: a new file, a regular time, a change in an app, or a button. They run it themselves, change one rule, and leave with a short note on how to use it tomorrow.",
+      title: "Performance lifts across the team",
+      body: "Less time on drafting, chasing, copying and reporting, and more on the work that needs judgement. People pick up methods they didn't know to ask for.",
     },
     {
-      title: "Engineers when it needs more",
-      body: "If a tool should work across several teams and systems, an Algosoup pod can build and look after it. The workshop tool stays useful without buying anything more.",
+      title: "More hands when you need them",
+      body: "When a workflow is too big for your team to build alone, an Algosoup pod of engineers embeds with you, builds it, and trains your people to run it.",
     },
   ],
-  buildsLabel: "Things people build in the room",
+  buildsLabel: "Workflows teams stop doing by hand",
   builds: [
-    "Follow-up queue from an inbox",
-    "A weekly report that updates itself",
-    "What changed between two lists",
-    "Files sorted into the right folders",
-    "A page showing the latest results",
-    "A printable report",
-    "A 30-second explainer video",
-    "Anything else they do on repeat",
+    "Weekly reporting",
+    "Client onboarding",
+    "Contract review",
+    "Meeting follow-ups",
+    "Invoice chasing",
+    "Candidate screening",
+    "Research briefs",
+    "Data clean-up",
   ],
 };
 
@@ -87,13 +85,13 @@ export const method = {
   index: "03",
   eyebrow: "How it works",
   title: "How a session runs",
-  lede: "A first session is three hours for 6 to 8 people with two facilitators. Each stage hands more of the work to your people.",
+  lede: "A first session is three hours for 6 to 8 people, in person. Each stage hands a bit more of the work to your people.",
   phases: [
     {
       n: "01",
       name: "Watch it built",
       duration: "10 minutes",
-      body: "We show an agent building a tool from a folder of messy emails. Nothing is sent, and the room sees the real build.",
+      body: "We show an agent building a tool from a folder of messy emails, live, so the room sees what is possible.",
       forta: 90,
     },
     {
@@ -107,7 +105,7 @@ export const method = {
       n: "03",
       name: "Make it visible",
       duration: "15 minutes",
-      body: "We show the same results as a simple page, a shareable report or a short video. Each person picks one extra for their own work.",
+      body: "We show the same results as a simple page, a shareable report or a short video, and each person picks one extra.",
       forta: 65,
     },
     {
@@ -121,7 +119,7 @@ export const method = {
       n: "05",
       name: "Show and tell",
       duration: "25 minutes",
-      body: "Everyone shows what they made in about 90 seconds: what they did by hand, what happens now, and when they will use it next.",
+      body: "Everyone shows what they made. We follow up the next week to see who is using it and what got in the way.",
       forta: 5,
     },
   ],
@@ -162,8 +160,8 @@ export const team = {
 
 export const engagement = {
   index: "06",
-  eyebrow: "Working with us",
-  title: "How we work with you",
+  eyebrow: "Pricing",
+  title: "What it costs",
   stages: [
     {
       name: "Free workflow rebuild",
@@ -173,7 +171,7 @@ export const engagement = {
     {
       name: "First workshop",
       shape: "3 hours, 6 to 8 people",
-      body: "The session above, in person, with a follow-up the next week. Fixed price, agreed with you after a short call.",
+      body: "In person, hands-on: everyone builds a tool for their own work and leaves knowing how to use it. Fixed price, agreed after a short call.",
     },
     {
       name: "A few days with your team",
@@ -183,10 +181,10 @@ export const engagement = {
     {
       name: "Algosoup pod",
       shape: "Scoped per project",
-      body: "For something bigger than a workshop tool, engineers work inside your business to build it and look after it. Separate from training, and only if you want it.",
+      body: "For workflows too big to build in-house, engineers embed with your team, build it, and hand over to the people we've trained. Separate from training, and only if you want it.",
     },
   ],
-  note: "Training and engineering are separate. The workshop tools stay useful without more services, and we will tell you plainly if a bigger build would help.",
+  note: "The workshop tools stay useful without buying anything more. A pod can be brought in whenever a build outgrows the team.",
 };
 
 export const closing = {

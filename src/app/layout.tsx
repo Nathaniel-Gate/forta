@@ -8,11 +8,11 @@ const plexSans = IBM_Plex_Sans({ variable: "--font-plex-sans", subsets: ["latin"
 const plexMono = IBM_Plex_Mono({ variable: "--font-plex-mono", subsets: ["latin"], weight: ["400", "500"], display: "swap" });
 
 export const metadata: Metadata = {
-  title: "Algosoup | AI training where everyone builds something useful",
+  title: "Algosoup | Make your company AI-native",
   description:
-    "Hands-on AI workshops from Algosoup. Every person builds a working tool for their own job, connects it to their day, and leaves knowing how to use it tomorrow.",
+    "Algosoup trains your team to get far more from AI, redoing manual workflows with them, with embedded engineering pods when a build is too big to do alone.",
   openGraph: {
-    title: "Algosoup | AI training where everyone builds something useful",
+    title: "Algosoup | Make your company AI-native",
     description: "Send us one manual workflow and get it back redone with AI, plus the Claude skills to run it, within three hours, free.",
     type: "website",
     locale: "en_GB",

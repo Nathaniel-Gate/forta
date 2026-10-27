@@ -8,36 +8,40 @@ export const faq = {
   cta: "Book a call",
   items: [
     {
-      q: "What actually happens in the session?",
-      a: "We show an AI agent building a tool in front of the room. Then everyone describes their own work, picks one recurring task, and builds a tool for it with the agent. We connect it to their real files, they run it themselves, and everyone shows what they made.",
+      q: "What's the catch with the free workflow rebuild?",
+      a: "There isn't one. It's the quickest way to show you how we think. If it's useful you'll probably want to talk, and if not, you've lost five minutes.",
     },
     {
-      q: "Is this a lecture or a slide deck?",
-      a: "No. It is in person and hands-on. People spend most of the three hours building, with two facilitators in the room.",
-    },
-    {
-      q: "Do our people need to code?",
-      a: "No. They describe what they want in plain English and the agent builds it. We help each person keep their first task small enough to finish.",
+      q: "What does AI-native actually mean?",
+      a: "Everyone in the company uses AI well, in their own work, every day. Jobs get done faster and people spend their time on the parts that need judgement.",
     },
     {
       q: "What are Claude skills?",
-      a: "A skill is a saved set of instructions that tells the agent how to do something, so anyone can run it the same way each time. We give you a workflow skill that guides each person through choosing and building a task, and you keep it.",
+      a: "Reusable instruction packs that teach Claude how your team does a particular job, so anyone can run it the same way each time. We write them with you and your team keeps them.",
     },
     {
-      q: "Will it work on our real files and tools?",
-      a: "Yes, where your IT team has approved the access. Each person brings an example they are allowed to use. If access is blocked on the day, we say clearly what is finished and what still needs connecting, and give the remaining step an owner. We never present a sample as a tool already doing your real work.",
+      q: "What happens in a workshop?",
+      a: "We show an agent building a tool live. Then everyone describes their own work, picks one recurring task and builds a tool for it, connects it to their real files, and shows what they made. We follow up the next week.",
     },
     {
-      q: "What happens after the session?",
-      a: "We follow up the next week to find out whether people used their tools and what got in the way. People leave with a short note covering what starts the tool, where results appear, how to stop it and who can help.",
+      q: "Is this an agency or a training course?",
+      a: "Training first. We teach your people by redoing real workflows with them. If a workflow is too big for the team to build, an Algosoup pod can build it while your people learn alongside.",
     },
     {
-      q: "Is the training just a way to sell engineering?",
-      a: "No. The workshop tool stays useful without any more services. Algosoup builds software for companies, so we will offer a separate conversation about one bigger project, and you can say no.",
+      q: "Do our people need to code?",
+      a: "No. Most of the gains come from people who know the work and learn to direct AI well. We choose the first group with you.",
+    },
+    {
+      q: "How fast will we see value?",
+      a: "The free rebuild shows you a reworked workflow in three hours. In a first workshop, everyone leaves with a working tool for their own job.",
     },
     {
       q: "What about security and our IT team?",
-      a: "Everything runs on files and tools your people are allowed to use, and nothing is sent anywhere without a person checking it first. Someone from your IT team helps with access on the day.",
+      a: "Everything runs in your own environment under your controls, and your IT team signs off the approach in the first week.",
+    },
+    {
+      q: "What happens when you leave?",
+      a: "Your team owns the skills, the workflows and the roadmap, and has already changed one without us. Support after that is optional.",
     },
   ],
 };
