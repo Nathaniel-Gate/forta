@@ -9,12 +9,14 @@ import { companySizes, enquirySchema, type Enquiry, type EnquiryInput } from "@/
 import { ESTIMATE_EVENT, INTENT_EVENT } from "@/lib/intent";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
+import { useNudge } from "@/lib/tour-state";
 import { cn } from "@/lib/cn";
 
 type Status = { state: "idle" } | { state: "sending" } | { state: "sent"; reference: string } | { state: "error"; message: string };
 
 export function Contact() {
   const reduce = useReducedMotion();
+  const nudge = useNudge();
   const [status, setStatus] = useState<Status>({ state: "idle" });
   const [estimate, setEstimate] = useState<string>("");
   const [attachEstimate, setAttachEstimate] = useState(false);
@@ -102,7 +104,12 @@ export function Contact() {
             </Reveal>
           </div>
 
-          <Reveal delay={0.1} className="edge-steel relative bg-ink-900/90 p-6 backdrop-blur sm:p-10">
+          <Reveal delay={0.1} className={cn("edge-steel relative bg-ink-900/90 p-6 backdrop-blur sm:p-10", nudge && "form-nudge")}>
+            {nudge && (
+              <span aria-hidden className="form-nudge-chip">
+                Your turn
+              </span>
+            )}
             <AnimatePresence mode="wait" initial={false}>
               {status.state === "sent" ? (
                 <motion.div

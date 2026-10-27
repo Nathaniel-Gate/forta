@@ -54,7 +54,11 @@ export function IdleTour() {
         const r = el.getBoundingClientRect();
         const pad = id === "top" ? 0 : parseFloat(getComputedStyle(el).paddingTop) || 0;
         const top = Math.max(0, window.scrollY + r.top + pad - navH - idleTour.navGapPx);
-        const end = window.scrollY + r.top + r.height;
+        // The contact section ends at its form, so the final stop shows the whole form, not the empty page bottom.
+        const form = id === "contact" ? el.querySelector<HTMLElement>(".edge-steel") : null;
+        const end = form
+          ? window.scrollY + form.getBoundingClientRect().bottom + idleTour.navGapPx * 2
+          : window.scrollY + r.top + r.height;
         const bottomAligned = end - vh;
         const ys = [top];
         while (ys[ys.length - 1] + vh < end - vh * 0.05) {
@@ -76,15 +80,20 @@ export function IdleTour() {
         const below = list.findIndex((y) => y > window.scrollY + 8);
         next = below < 0 ? 0 : below;
       }
-      const y = list[next % list.length];
-      next = (next + 1) % list.length;
+      tourState.setNudge(false);
+      const index = next % list.length;
+      const isLast = index === list.length - 1;
+      const y = list[index];
+      next = (index + 1) % list.length;
       const distance = Math.abs(y - window.scrollY) / window.innerHeight;
       lenis.scrollTo(y, {
         duration: Math.min(glide.max, glide.base + distance * glide.perViewport),
         easing: easeInOutSine,
         force: true,
         onComplete: () => {
-          if (touring) nextTimer = setTimeout(step, between(idleTour.dwellMs));
+          if (!touring) return;
+          if (isLast) tourState.setNudge(true);
+          nextTimer = setTimeout(step, between(isLast ? idleTour.finalDwellMs : idleTour.dwellMs));
         },
       });
     };
