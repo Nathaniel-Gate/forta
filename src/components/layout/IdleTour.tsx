@@ -36,9 +36,11 @@ export function IdleTour() {
     };
 
     /**
-     * Scroll positions to visit, top to bottom. Each stop puts the middle of a
-     * section (or of a slice of it, when it is taller than the screen) in the
-     * middle of the viewport, so the whole page is shown at any aspect ratio.
+     * Scroll positions to visit, top to bottom. Each section gets a stop with
+     * its top edge aligned to the top of the screen. A section taller than the
+     * screen gets further stops that move down it, the last one lining its
+     * bottom edge up with the bottom of the screen, so all of it is seen at any
+     * aspect ratio.
      */
     const stops = () => {
       const vh = window.innerHeight;
@@ -49,11 +51,12 @@ export function IdleTour() {
         if (!el) continue;
         const r = el.getBoundingClientRect();
         const top = window.scrollY + r.top;
-        const slices = Math.max(1, Math.ceil(r.height / (vh * idleTour.maxSliceOfViewport)));
-        for (let k = 0; k < slices; k++) {
-          const mid = top + ((k + 0.5) * r.height) / slices;
-          out.push(Math.min(max, Math.max(0, Math.round(mid - vh / 2))));
+        const bottomAligned = top + r.height - vh;
+        const ys = [top];
+        while (ys[ys.length - 1] + vh < top + r.height - vh * 0.05) {
+          ys.push(Math.min(ys[ys.length - 1] + vh * idleTour.sliceStep, bottomAligned));
         }
+        for (const y of ys) out.push(Math.min(max, Math.max(0, Math.round(y))));
       }
       // Clamping at the page ends can repeat a position; keep each once, in order.
       return out.filter((y, i) => i === 0 || y > out[i - 1] + 8);
