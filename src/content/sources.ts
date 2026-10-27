@@ -15,27 +15,27 @@ export type Source = {
   note?: string;
 };
 
-export type SourceId = "peng-copilot-2023" | "gartner-digital-2024";
+export type SourceId = "dsit-ipsos-2026" | "mit-nanda-2025";
 
 export const sources: Source[] = [
   {
-    id: "peng-copilot-2023",
-    publisher: "Peng, Kalliamvakou, Cihon & Demirer (arXiv)",
-    title: "The Impact of AI on Developer Productivity: Evidence from GitHub Copilot",
-    year: "2023",
-    url: "https://arxiv.org/abs/2302.06590",
-    finding: "In a randomised controlled trial, developers with an AI pair programmer completed a task 55.8% faster.",
-    note: "A single, well-defined coding task. We cite it as direction of travel, not a universal multiplier.",
+    id: "dsit-ipsos-2026",
+    publisher: "DSIT, DCMS and Ipsos",
+    title: "UK employer survey on skills for artificial intelligence",
+    year: "Jan 2026",
+    url: "https://www.gov.uk/government/publications/uk-employer-survey-on-skills-for-artificial-intelligence",
+    finding: "11% of employers had staff undertake training on AI in the last 12 months.",
+    note: "Survey of 801 UK employers, fieldwork 19 March to 7 June 2024, excluding sole traders and the public sector. It measures employers, not individual workers.",
   },
   {
-    id: "gartner-digital-2024",
-    publisher: "Gartner",
-    title: "Only 48% of Digital Initiatives Meet or Exceed Their Business Outcome Targets",
-    year: "Oct 2024",
-    url: "https://www.gartner.com/en/newsroom/press-releases/2024-10-22-gartner-survey-reveals-that-only-48-percent-of-digital-initiatives-meet-or-exceed-their-business-outcome-targets",
+    id: "mit-nanda-2025",
+    publisher: "MIT NANDA, reported by Fortune",
+    title: "MIT report: 95% of generative AI pilots at companies are failing",
+    year: "Aug 2025",
+    url: "https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo/",
     finding:
-      "48% of digital initiatives meet their outcome targets. Where business leaders co-own delivery with IT, the rate rises to 71%.",
-    note: "Survey of 3,186 CIOs and technology executives in 88 countries.",
+      "About 95% of company generative AI pilots showed little or no measurable return. The report, The GenAI Divide: State of AI in Business 2025, attributes this to a learning gap and poor integration rather than model quality.",
+    note: "A single study based on 150 interviews, a survey of 350 employees and 300 public deployments. It measures pilots failing to deliver returns, which is narrower than AI failing.",
   },
 ];
 

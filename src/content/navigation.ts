@@ -2,7 +2,7 @@
 
 export const brand = {
   name: "Algosoup",
-  descriptor: "Helping companies become AI-native",
+  descriptor: "AI training and enablement",
   location: "London, United Kingdom",
 };
 
@@ -16,7 +16,7 @@ export const navLinks = [
 export const navCta = { label: "Free workflow rebuild", href: "/#stack" };
 
 export const footer = {
-  statement: "Algosoup makes companies AI-native.",
+  statement: "Algosoup teaches teams to build with AI.",
   columns: [
     {
       title: "Explore",
