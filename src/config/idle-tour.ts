@@ -8,8 +8,10 @@ export const idleTour = {
   dwellMs: [4_000, 6_000] as const,
   /** A section taller than the screen is toured in further stops, each moving down by this share of the screen height. */
   sliceStep: 0.85,
-  /** Rest on the final stop this long (the enquiry form's prompt plays meanwhile). */
-  finalDwellMs: [8_000, 10_000] as const,
+  /** Safety net: leave the final stop after this long even if the form prompt never reports back. */
+  nudgeMaxMs: 20_000,
+  /** Pause after the form prompt ends before the tour heads back up. */
+  afterNudgeMs: 900,
   /** Breathing room between the nav and a section's first content line at each stop. */
   navGapPx: 24,
   /** Sections to visit, top to bottom, then loop back to the first. Missing ids are skipped. */

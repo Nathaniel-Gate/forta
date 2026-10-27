@@ -9,7 +9,8 @@ import { companySizes, enquirySchema, type Enquiry, type EnquiryInput } from "@/
 import { ESTIMATE_EVENT, INTENT_EVENT } from "@/lib/intent";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
-import { useNudge } from "@/lib/tour-state";
+import { formPrompt } from "@/config/form-prompt";
+import { tourState, useNudge } from "@/lib/tour-state";
 import { cn } from "@/lib/cn";
 
 type Status = { state: "idle" } | { state: "sending" } | { state: "sent"; reference: string } | { state: "error"; message: string };
@@ -17,6 +18,7 @@ type Status = { state: "idle" } | { state: "sending" } | { state: "sent"; refere
 export function Contact() {
   const reduce = useReducedMotion();
   const nudge = useNudge();
+  const formRef = useRef<HTMLFormElement>(null);
   const [status, setStatus] = useState<Status>({ state: "idle" });
   const [estimate, setEstimate] = useState<string>("");
   const [attachEstimate, setAttachEstimate] = useState(false);
@@ -34,6 +36,75 @@ export function Contact() {
     defaultValues: { intent: "call", message: "", website: "" },
     mode: "onTouched",
   });
+
+  const leftRef = useRef<HTMLDivElement>(null);
+  const wipeRef = useRef<HTMLSpanElement>(null);
+
+  // The tour's form prompt, all in white: a light band wipes across the left text, each field is outlined in
+  // turn, then the form and its button pulse a few times, slower and fainter each time. Then the tour moves on.
+  useEffect(() => {
+    if (!nudge) return;
+    const form = formRef.current;
+    const left = leftRef.current;
+    const card = form?.closest<HTMLElement>(".edge-steel");
+    if (!form || !left || !card) return;
+    const cfg = formPrompt;
+    const animations: Animation[] = [];
+    const white = (a: number) => `rgba(255,255,255,${a})`;
+    const rest = "inset 0 1px 0 rgba(255,255,255,0.06)";
+    const ring = (amp: number, spread: number) => `${rest}, 0 0 0 1px ${white(0.85 * amp)}, 0 0 ${spread}px 1px ${white(0.3 * amp)}`;
+    const flash = (el: Element, delay: number, duration: number, amp: number, spread: number, restShadow = "none") =>
+      animations.push(
+        el.animate(
+          [{ boxShadow: restShadow }, { boxShadow: ring(amp, spread), offset: 0.35 }, { boxShadow: restShadow }],
+          { delay, duration, easing: "ease-in-out" },
+        ),
+      );
+
+    // 1. Light band across the heading and text.
+    wipeRef.current?.animate(
+      [
+        { transform: "translateX(-60%)", opacity: 0 },
+        { opacity: 1, offset: 0.2 },
+        { opacity: 1, offset: 0.8 },
+        { transform: "translateX(260%)", opacity: 0 },
+      ],
+      { duration: cfg.wipeMs, easing: "cubic-bezier(0.4, 0, 0.2, 1)" },
+    );
+    left.querySelectorAll<HTMLElement>("h2, p, a").forEach((el) =>
+      animations.push(
+        el.animate(
+          [{ textShadow: "0 0 0 rgba(255,255,255,0)" }, { textShadow: `0 0 26px ${white(0.55)}`, offset: 0.5 }, { textShadow: "0 0 0 rgba(255,255,255,0)" }],
+          { duration: cfg.wipeMs, easing: "ease-in-out" },
+        ),
+      ),
+    );
+
+    // 2. Outline each field in turn (outline only, no fill).
+    const targets: Element[] = [];
+    form.querySelectorAll<HTMLElement>("[data-nudge]").forEach((el) => {
+      if (el.tagName === "BUTTON") return;
+      if (el.tagName === "FIELDSET") targets.push(...el.querySelectorAll("label"));
+      else targets.push(...el.querySelectorAll("input:not([type=radio]), select, textarea"));
+    });
+    const fieldsStart = cfg.wipeMs * 0.75;
+    targets.forEach((el, i) => flash(el, fieldsStart + i * cfg.fieldStepMs, cfg.fieldMs, 1, 16));
+
+    // 3. Pulse the whole form and the button, slowing and fading.
+    const button = form.querySelector<HTMLElement>("button[data-nudge]");
+    const pulsesStart = fieldsStart + targets.length * cfg.fieldStepMs + 200;
+    cfg.pulses.forEach((p) => {
+      flash(card, pulsesStart + p.at, p.ms, p.amp, 40, rest);
+      if (button) flash(button, pulsesStart + p.at, p.ms, Math.min(1, p.amp + 0.15), 30);
+    });
+    const last = cfg.pulses[cfg.pulses.length - 1];
+    const end = setTimeout(() => tourState.endNudge(), pulsesStart + last.at + last.ms + 200);
+
+    return () => {
+      clearTimeout(end);
+      animations.forEach((a) => a.cancel());
+    };
+  }, [nudge]);
 
   const intent = useWatch({ control, name: "intent" });
 
@@ -78,7 +149,19 @@ export function Contact() {
       <div aria-hidden className="bg-blueprint absolute inset-0 -z-10 [mask-image:radial-gradient(ellipse_70%_60%_at_20%_30%,black,transparent_75%)]" />
       <Container>
         <div className="grid gap-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-20">
-          <div>
+          <div ref={leftRef} className="relative lg:sticky lg:top-[calc(var(--nav-h)+3rem)] lg:self-start">
+            <span aria-hidden className="pointer-events-none absolute -inset-x-6 inset-y-0 overflow-hidden">
+              <span
+                ref={wipeRef}
+                className="absolute inset-y-0 left-0 w-1/3 opacity-0 mix-blend-screen"
+                style={{
+                  background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.16), transparent)",
+                  filter: "blur(10px)",
+                  maskImage: "linear-gradient(to bottom, transparent, black 25%, black 75%, transparent)",
+                  WebkitMaskImage: "linear-gradient(to bottom, transparent, black 25%, black 75%, transparent)",
+                }}
+              />
+            </span>
             <Reveal>
               <div className="flex items-center gap-4 border-t border-white/[0.09] pt-4 font-mono text-[0.7rem] uppercase tracking-[0.18em] text-steel-400">
                 <span>{closing.index}</span>
@@ -105,11 +188,6 @@ export function Contact() {
           </div>
 
           <Reveal delay={0.1} className={cn("edge-steel relative bg-ink-900/90 p-6 backdrop-blur sm:p-10", nudge && "form-nudge")}>
-            {nudge && (
-              <span aria-hidden className="form-nudge-chip">
-                Your turn
-              </span>
-            )}
             <AnimatePresence mode="wait" initial={false}>
               {status.state === "sent" ? (
                 <motion.div
@@ -143,6 +221,7 @@ export function Contact() {
               ) : (
                 <motion.form
                   key="form"
+                  ref={formRef}
                   noValidate
                   onSubmit={handleSubmit(onSubmit)}
                   initial={{ opacity: 0 }}
@@ -150,7 +229,7 @@ export function Contact() {
                   transition={reduce ? { duration: 0 } : undefined}
                   aria-describedby="form-note"
                 >
-                  <fieldset>
+                  <fieldset data-nudge>
                     <legend className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-steel-500">I would like to</legend>
                     <div className="mt-4 grid gap-2 sm:grid-cols-3">
                       {closing.intents.map((opt) => (
@@ -217,7 +296,7 @@ export function Contact() {
                     </label>
                   )}
 
-                  <label className="mt-6 flex cursor-pointer items-start gap-3 text-[0.88rem] leading-snug text-steel-300">
+                  <label data-nudge className="mt-6 flex cursor-pointer items-start gap-3 text-[0.88rem] leading-snug text-steel-300">
                     <input
                       type="checkbox"
                       {...register("consent")}
@@ -241,6 +320,7 @@ export function Contact() {
 
                   <button
                     type="submit"
+                    data-nudge
                     disabled={status.state === "sending"}
                     className="group mt-8 flex min-h-14 w-full items-center justify-between bg-white px-6 text-[0.98rem] font-medium text-ink-950 transition-[background-color,box-shadow] hover:shadow-[0_0_0_1px_rgb(91_140_255/0.6),0_0_36px_-6px_rgb(91_140_255/0.55)] disabled:cursor-progress disabled:opacity-70"
                   >
@@ -277,7 +357,7 @@ function FieldShell({
   children,
 }: BaseProps & { id: string; children: React.ReactNode }) {
   return (
-    <div className="mt-6">
+    <div className="mt-6" data-nudge>
       <label htmlFor={id} className="flex justify-between text-[0.8rem] text-steel-400">
         {label}
         {optional && <span className="text-steel-500">Optional</span>}

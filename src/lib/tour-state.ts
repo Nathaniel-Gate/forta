@@ -4,6 +4,7 @@ import { useSyncExternalStore } from "react";
 let touring = false;
 let nudging = false;
 const listeners = new Set<() => void>();
+const nudgeEndListeners = new Set<() => void>();
 
 export const tourState = {
   set(v: boolean) {
@@ -17,6 +18,14 @@ export const tourState = {
     if (v === nudging) return;
     nudging = v;
     listeners.forEach((l) => l());
+  },
+  /** The form's prompt finished playing: the tour may move on. */
+  endNudge() {
+    nudgeEndListeners.forEach((l) => l());
+  },
+  onNudgeEnd(fn: () => void) {
+    nudgeEndListeners.add(fn);
+    return () => void nudgeEndListeners.delete(fn);
   },
 };
 

@@ -27,6 +27,7 @@ export function IdleTour() {
     let idleTimer: ReturnType<typeof setTimeout> | undefined;
     let nextTimer: ReturnType<typeof setTimeout> | undefined;
     let touring = false;
+    let offNudge: (() => void) | undefined;
     let next = -1; // index of the stop to visit next; -1 = pick from the current scroll position
     let lastMouse = { x: -1, y: -1 };
 
@@ -54,11 +55,19 @@ export function IdleTour() {
         const r = el.getBoundingClientRect();
         const pad = id === "top" ? 0 : parseFloat(getComputedStyle(el).paddingTop) || 0;
         const top = Math.max(0, window.scrollY + r.top + pad - navH - idleTour.navGapPx);
-        // The contact section ends at its form, so the final stop shows the whole form, not the empty page bottom.
+        // The contact stop is the form itself: one stop that always shows the whole form, down to its button.
         const form = id === "contact" ? el.querySelector<HTMLElement>(".edge-steel") : null;
-        const end = form
-          ? window.scrollY + form.getBoundingClientRect().bottom + idleTour.navGapPx * 2
-          : window.scrollY + r.top + r.height;
+        if (form) {
+          const fr = form.getBoundingClientRect();
+          const formTop = window.scrollY + fr.top;
+          const room = vh - navH;
+          const fits = fr.height + 2 * idleTour.navGapPx <= room;
+          // Fits: centre the form. Taller than the screen: line the bottom of the form up with the bottom of the screen.
+          const y = fits ? formTop - navH - (room - fr.height) / 2 : formTop + fr.height + idleTour.navGapPx - vh;
+          out.push(Math.min(max, Math.max(0, Math.round(y))));
+          continue;
+        }
+        const end = window.scrollY + r.top + r.height;
         const bottomAligned = end - vh;
         const ys = [top];
         while (ys[ys.length - 1] + vh < end - vh * 0.05) {
@@ -92,8 +101,24 @@ export function IdleTour() {
         force: true,
         onComplete: () => {
           if (!touring) return;
-          if (isLast) tourState.setNudge(true);
-          nextTimer = setTimeout(step, between(isLast ? idleTour.finalDwellMs : idleTour.dwellMs));
+          if (!isLast) {
+            nextTimer = setTimeout(step, between(idleTour.dwellMs));
+            return;
+          }
+          // Final stop: let the form prompt play, then head back up.
+          let done = false;
+          const finish = () => {
+            if (done) return;
+            done = true;
+            off();
+            clearTimeout(nextTimer);
+            tourState.setNudge(false);
+            nextTimer = setTimeout(step, idleTour.afterNudgeMs);
+          };
+          const off = tourState.onNudgeEnd(finish);
+          offNudge = off;
+          tourState.setNudge(true);
+          nextTimer = setTimeout(finish, idleTour.nudgeMaxMs);
         },
       });
     };
@@ -113,6 +138,7 @@ export function IdleTour() {
       if (touring) {
         touring = false;
         tourState.set(false);
+        offNudge?.();
         clearTimeout(nextTimer);
         lenis.scrollTo(lenis.scroll, { immediate: true, force: true }); // halt any glide in flight
       }
