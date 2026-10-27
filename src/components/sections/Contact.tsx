@@ -51,14 +51,41 @@ export function Contact() {
     const cfg = formPrompt;
     const animations: Animation[] = [];
     const white = (a: number) => `rgba(255,255,255,${a})`;
-    const rest = "inset 0 1px 0 rgba(255,255,255,0.06)";
-    const ring = (amp: number, spread: number) => `${rest}, 0 0 0 1px ${white(0.85 * amp)}, 0 0 ${spread}px 1px ${white(0.3 * amp)}`;
-    const flash = (el: Element, delay: number, duration: number, amp: number, spread: number, restShadow = "none") =>
+    const shadow = (amp: number, spread: number) => `0 0 0 1px ${white(0.85 * amp)}, 0 0 ${spread}px 1px ${white(0.3 * amp)}`;
+    // Field outlines: same two-shadow list at both ends so the browser interpolates cleanly.
+    const outline = (el: Element, delay: number, duration: number) =>
       animations.push(
-        el.animate(
-          [{ boxShadow: restShadow }, { boxShadow: ring(amp, spread), offset: 0.35 }, { boxShadow: restShadow }],
-          { delay, duration, easing: "ease-in-out" },
-        ),
+        el.animate([{ boxShadow: shadow(0, 0) }, { boxShadow: shadow(1, 16), offset: 0.35 }, { boxShadow: shadow(0, 0) }], {
+          delay,
+          duration,
+          easing: "ease-in-out",
+        }),
+      );
+    // Pulses: a separate glow layer on top of the card or button that only changes opacity. Animating the card's
+    // own box-shadow dropped its hairline border and repainted the blurred card every frame, which flickered.
+    const layers: HTMLElement[] = [];
+    const glowLayer = (host: HTMLElement, spread: number) => {
+      const layer = document.createElement("span");
+      layer.setAttribute("aria-hidden", "true");
+      Object.assign(layer.style, {
+        position: "absolute",
+        inset: "0",
+        pointerEvents: "none",
+        opacity: "0",
+        boxShadow: shadow(1, spread),
+        willChange: "opacity",
+      });
+      host.appendChild(layer);
+      layers.push(layer);
+      return layer;
+    };
+    const pulse = (layer: HTMLElement, delay: number, duration: number, amp: number) =>
+      animations.push(
+        layer.animate([{ opacity: 0 }, { opacity: amp, offset: 0.3 }, { opacity: 0 }], {
+          delay,
+          duration,
+          easing: "ease-in-out",
+        }),
       );
 
     // 1. Light band across the heading and text.
@@ -88,14 +115,17 @@ export function Contact() {
       else targets.push(...el.querySelectorAll("input:not([type=radio]), select, textarea"));
     });
     const fieldsStart = cfg.wipeMs * 0.75;
-    targets.forEach((el, i) => flash(el, fieldsStart + i * cfg.fieldStepMs, cfg.fieldMs, 1, 16));
+    targets.forEach((el, i) => outline(el, fieldsStart + i * cfg.fieldStepMs, cfg.fieldMs));
 
     // 3. Pulse the whole form and the button, slowing and fading.
     const button = form.querySelector<HTMLElement>("button[data-nudge]");
     const pulsesStart = fieldsStart + targets.length * cfg.fieldStepMs + 200;
+    const cardGlow = glowLayer(card, 40);
+    const buttonGlow = button ? glowLayer(button, 30) : null;
+    if (button && getComputedStyle(button).position === "static") button.style.position = "relative";
     cfg.pulses.forEach((p) => {
-      flash(card, pulsesStart + p.at, p.ms, p.amp, 40, rest);
-      if (button) flash(button, pulsesStart + p.at, p.ms, Math.min(1, p.amp + 0.15), 30);
+      pulse(cardGlow, pulsesStart + p.at, p.ms, p.amp);
+      if (buttonGlow) pulse(buttonGlow, pulsesStart + p.at, p.ms, Math.min(1, p.amp + 0.15));
     });
     const last = cfg.pulses[cfg.pulses.length - 1];
     const end = setTimeout(() => tourState.endNudge(), pulsesStart + last.at + last.ms + 200);
@@ -103,6 +133,7 @@ export function Contact() {
     return () => {
       clearTimeout(end);
       animations.forEach((a) => a.cancel());
+      layers.forEach((l) => l.remove());
     };
   }, [nudge]);
 
